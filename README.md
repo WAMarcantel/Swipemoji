@@ -3,7 +3,7 @@
 An iOS keyboard extension that inputs gestures for emojis.
 
 # Key Features
-  ##Requirements
+  ## Requirements
   - Inputting gestures
   - Recognizing and interpreting gestures
   - Outputting emoji into text field
