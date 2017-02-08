@@ -11,6 +11,8 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
 
     @IBOutlet var nextKeyboardButton: UIButton!
+    @IBOutlet var keyboardView: UIView!
+
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -34,6 +36,30 @@ class KeyboardViewController: UIInputViewController {
         
         self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        loadInterface();
+    }
+    
+    func loadInterface() {
+//        // load the nib file
+        let keyboardNib = UINib(nibName: "Swipemoji", bundle: nil)
+//        // instantiate the view
+        keyboardView = keyboardNib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        
+        // add the interface to the main view
+        view.addSubview(keyboardView)
+        
+        // copy the background color
+        view.backgroundColor = keyboardView.backgroundColor
+    }
+    
+    @IBAction func testButtonPressed(_ sender: Any) {
+        print("Awwww yeah")
+        var proxy = textDocumentProxy as UITextDocumentProxy
+        
+        if let input = "Awwww yeah" as String? {
+            proxy.insertText(input)
+        }
     }
     
     override func didReceiveMemoryWarning() {

@@ -14,6 +14,7 @@
 		16EA02A31E4B775F00B23EAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16EA02A11E4B775F00B23EAC /* LaunchScreen.storyboard */; };
 		16EA02B11E4B786800B23EAC /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA02B01E4B786800B23EAC /* KeyboardViewController.swift */; };
 		16EA02B51E4B786800B23EAC /* Swipemoji.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 16EA02AE1E4B786800B23EAC /* Swipemoji.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		16EA02BB1E4B79F100B23EAC /* Swipemoji.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16EA02BA1E4B79F100B23EAC /* Swipemoji.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		16EA02AE1E4B786800B23EAC /* Swipemoji.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Swipemoji.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		16EA02B01E4B786800B23EAC /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		16EA02B21E4B786800B23EAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16EA02BA1E4B79F100B23EAC /* Swipemoji.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Swipemoji.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				16EA02B01E4B786800B23EAC /* KeyboardViewController.swift */,
 				16EA02B21E4B786800B23EAC /* Info.plist */,
+				16EA02BA1E4B79F100B23EAC /* Swipemoji.xib */,
 			);
 			path = Swipemoji;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16EA02BB1E4B79F100B23EAC /* Swipemoji.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
