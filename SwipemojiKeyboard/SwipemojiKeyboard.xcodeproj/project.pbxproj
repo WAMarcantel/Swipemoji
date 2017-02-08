@@ -12,7 +12,33 @@
 		16EA029E1E4B775F00B23EAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16EA029C1E4B775F00B23EAC /* Main.storyboard */; };
 		16EA02A01E4B775F00B23EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16EA029F1E4B775F00B23EAC /* Assets.xcassets */; };
 		16EA02A31E4B775F00B23EAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16EA02A11E4B775F00B23EAC /* LaunchScreen.storyboard */; };
+		16EA02B11E4B786800B23EAC /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA02B01E4B786800B23EAC /* KeyboardViewController.swift */; };
+		16EA02B51E4B786800B23EAC /* Swipemoji.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 16EA02AE1E4B786800B23EAC /* Swipemoji.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		16EA02B31E4B786800B23EAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16EA028D1E4B775E00B23EAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16EA02AD1E4B786800B23EAC;
+			remoteInfo = Swipemoji;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		16EA02B91E4B786800B23EAC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				16EA02B51E4B786800B23EAC /* Swipemoji.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		16EA02951E4B775E00B23EAC /* SwipemojiKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipemojiKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,10 +48,20 @@
 		16EA029F1E4B775F00B23EAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16EA02A21E4B775F00B23EAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		16EA02A41E4B775F00B23EAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16EA02AE1E4B786800B23EAC /* Swipemoji.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Swipemoji.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		16EA02B01E4B786800B23EAC /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		16EA02B21E4B786800B23EAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		16EA02921E4B775E00B23EAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16EA02AB1E4B786800B23EAC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				16EA02971E4B775E00B23EAC /* SwipemojiKeyboard */,
+				16EA02AF1E4B786800B23EAC /* Swipemoji */,
 				16EA02961E4B775E00B23EAC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				16EA02951E4B775E00B23EAC /* SwipemojiKeyboard.app */,
+				16EA02AE1E4B786800B23EAC /* Swipemoji.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,6 +102,15 @@
 			path = SwipemojiKeyboard;
 			sourceTree = "<group>";
 		};
+		16EA02AF1E4B786800B23EAC /* Swipemoji */ = {
+			isa = PBXGroup;
+			children = (
+				16EA02B01E4B786800B23EAC /* KeyboardViewController.swift */,
+				16EA02B21E4B786800B23EAC /* Info.plist */,
+			);
+			path = Swipemoji;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,15 +121,34 @@
 				16EA02911E4B775E00B23EAC /* Sources */,
 				16EA02921E4B775E00B23EAC /* Frameworks */,
 				16EA02931E4B775E00B23EAC /* Resources */,
+				16EA02B91E4B786800B23EAC /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				16EA02B41E4B786800B23EAC /* PBXTargetDependency */,
 			);
 			name = SwipemojiKeyboard;
 			productName = SwipemojiKeyboard;
 			productReference = 16EA02951E4B775E00B23EAC /* SwipemojiKeyboard.app */;
 			productType = "com.apple.product-type.application";
+		};
+		16EA02AD1E4B786800B23EAC /* Swipemoji */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16EA02B61E4B786800B23EAC /* Build configuration list for PBXNativeTarget "Swipemoji" */;
+			buildPhases = (
+				16EA02AA1E4B786800B23EAC /* Sources */,
+				16EA02AB1E4B786800B23EAC /* Frameworks */,
+				16EA02AC1E4B786800B23EAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Swipemoji;
+			productName = Swipemoji;
+			productReference = 16EA02AE1E4B786800B23EAC /* Swipemoji.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -95,6 +161,11 @@
 				ORGANIZATIONNAME = swipemoji;
 				TargetAttributes = {
 					16EA02941E4B775E00B23EAC = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 4XRLFC3F88;
+						ProvisioningStyle = Automatic;
+					};
+					16EA02AD1E4B786800B23EAC = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 4XRLFC3F88;
 						ProvisioningStyle = Automatic;
@@ -115,6 +186,7 @@
 			projectRoot = "";
 			targets = (
 				16EA02941E4B775E00B23EAC /* SwipemojiKeyboard */,
+				16EA02AD1E4B786800B23EAC /* Swipemoji */,
 			);
 		};
 /* End PBXProject section */
@@ -130,6 +202,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		16EA02AC1E4B786800B23EAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -142,7 +221,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		16EA02AA1E4B786800B23EAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16EA02B11E4B786800B23EAC /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		16EA02B41E4B786800B23EAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 16EA02AD1E4B786800B23EAC /* Swipemoji */;
+			targetProxy = 16EA02B31E4B786800B23EAC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		16EA029C1E4B775F00B23EAC /* Main.storyboard */ = {
@@ -260,6 +355,7 @@
 		16EA02A81E4B775F00B23EAC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4XRLFC3F88;
 				INFOPLIST_FILE = SwipemojiKeyboard/Info.plist;
@@ -273,12 +369,39 @@
 		16EA02A91E4B775F00B23EAC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4XRLFC3F88;
 				INFOPLIST_FILE = SwipemojiKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swipemoji.SwipemojiKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		16EA02B71E4B786800B23EAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 4XRLFC3F88;
+				INFOPLIST_FILE = Swipemoji/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.swipemoji.SwipemojiKeyboard.Swipemoji;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		16EA02B81E4B786800B23EAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 4XRLFC3F88;
+				INFOPLIST_FILE = Swipemoji/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.swipemoji.SwipemojiKeyboard.Swipemoji;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -300,6 +423,14 @@
 			buildConfigurations = (
 				16EA02A81E4B775F00B23EAC /* Debug */,
 				16EA02A91E4B775F00B23EAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		16EA02B61E4B786800B23EAC /* Build configuration list for PBXNativeTarget "Swipemoji" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16EA02B71E4B786800B23EAC /* Debug */,
+				16EA02B81E4B786800B23EAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
