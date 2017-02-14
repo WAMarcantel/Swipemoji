@@ -27,13 +27,8 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        self.nextKeyboardButton = UIButton(type: .system)
-//        
-//        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
-//        self.nextKeyboardButton.sizeToFit()
-//        self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
         loadInterface();
-
+ 
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         
         self.view.addSubview(self.nextKeyboardButton)
