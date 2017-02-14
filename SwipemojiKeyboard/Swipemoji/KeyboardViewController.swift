@@ -12,7 +12,11 @@ class KeyboardViewController: UIInputViewController {
 
     @IBOutlet var nextKeyboardButton: UIButton!
     @IBOutlet var keyboardView: UIView!
+    @IBOutlet weak var drawingArea: UIView!
 
+    var lastPoint = CGPoint.zero
+    var drawingCanvas:PointDrawingCanvas?
+    var _library = PointCloudLibrary.getDemoLibrary()
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -22,14 +26,9 @@ class KeyboardViewController: UIInputViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Perform custom UI setup here
-        self.nextKeyboardButton = UIButton(type: .system)
-        
-        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
-        self.nextKeyboardButton.sizeToFit()
-        self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
-        
+
+        loadInterface();
+ 
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         
         self.view.addSubview(self.nextKeyboardButton)
@@ -37,7 +36,11 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
-        loadInterface();
+        
+        drawingCanvas = PointDrawingCanvas(frame: drawingArea!.bounds)
+        drawingCanvas!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        drawingArea!.addSubview(drawingCanvas!)
+        // Perform custom UI setup here
     }
     
     func loadInterface() {
@@ -53,12 +56,35 @@ class KeyboardViewController: UIInputViewController {
         view.backgroundColor = keyboardView.backgroundColor
     }
     
-    @IBAction func testButtonPressed(_ sender: Any) {
-        print("Awwww yeah")
-        var proxy = textDocumentProxy as UITextDocumentProxy
-        
-        if let input = "💩" as String? {
-            proxy.insertText(input)
+    @IBAction func clearButtonPressed(_ sender: Any) {
+        drawingCanvas?.clearCanvas()
+    }
+    
+//    @IBAction func testButtonPressed(_ sender: Any) {
+//        print("Awwww yeah")
+//        var proxy = textDocumentProxy as UITextDocumentProxy
+//        
+//        if let input = "💩" as String? {
+//            proxy.insertText(input)
+//        }
+//    }
+    
+    @IBAction func submitPressed(_ sender: Any) {
+        if let canvas = drawingCanvas {
+            if !canvas.isEmpty() {
+                let pointCloud = PointCloud("input gesture", canvas.points)
+                let matchResult = _library.recognizeFromLibrary(pointCloud)
+//                let text = "\(matchResult.name), score: \(matchResult.score)"
+                let text = "\(matchResult.name) "
+                var proxy = textDocumentProxy as UITextDocumentProxy
+                
+                if let input = text as String? {
+                    proxy.insertText(input)
+                    drawingCanvas?.clearCanvas()
+                }
+            } else {
+//                self.label!.text = "No match result."
+            }
         }
     }
     
