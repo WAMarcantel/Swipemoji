@@ -57,7 +57,7 @@ class KeyboardViewController: UIInputViewController {
         print("Awwww yeah")
         var proxy = textDocumentProxy as UITextDocumentProxy
         
-        if let input = "Awwww yeah" as String? {
+        if let input = "💩" as String? {
             proxy.insertText(input)
         }
     }
