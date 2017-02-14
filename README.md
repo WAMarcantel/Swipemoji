@@ -16,6 +16,12 @@ An iOS keyboard extension that inputs gestures for emojis.
 # TODO:
 - [x] Set up development environment with GitHub and XCode
 - [x] Set up keyboard
-- [ ] Drawing pad view which returns point cloud (with multiple strokes)
-- [ ] Code up $P in Swift
+- [x] Drawing pad view which returns point cloud (with multiple strokes)
+    - [ ] Time delay input
+- [x] Code up $P in Swift
 - [ ] Output emoji into keyboard
+- [ ] Input gestures and correlate to emoji
+- [ ] Suggestions bar (Top 3 emojis)
+- [ ] Clean up UI
+
+
