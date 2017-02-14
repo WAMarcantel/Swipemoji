@@ -47,6 +47,14 @@
                         <action selector="clearButtonPressed:" destination="-1" eventType="touchUpInside" id="CVj-K9-Chx"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zY7-4a-BAW">
+                    <rect key="frame" x="150" y="172" width="75" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Backspace"/>
+                    <connections>
+                        <action selector="backspacePressed:" destination="-1" eventType="touchUpInside" id="SWX-1m-Ypo"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.92230062260000001" green="0.95854666749999995" blue="0.99189911909999995" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>

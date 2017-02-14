@@ -88,6 +88,11 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
+    @IBAction func backspacePressed(_ sender: Any) {
+        var proxy = textDocumentProxy as UITextDocumentProxy
+        proxy.deleteBackward()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated
