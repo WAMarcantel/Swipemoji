@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3AADE903C3EB03EF846538D673CBD938F07419B2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3AADE903C3EB03EF846538D673CBD938F07419B2" : 9223372036854775807,
+    "C7046BA518419307302DF7AF1647BCA357736D41" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A1DFE22A-052F-4585-9B89-388B8153F54A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3AADE903C3EB03EF846538D673CBD938F07419B2" : "Swipemoji\/",
+    "C7046BA518419307302DF7AF1647BCA357736D41" : "PointCloud-Swift\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SwipemojiKeyboard",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SwipemojiKeyboard\/SwipemojiKeyboard.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/WAMarcantel\/Swipemoji.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3AADE903C3EB03EF846538D673CBD938F07419B2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/takashiw\/PointCloud-Swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C7046BA518419307302DF7AF1647BCA357736D41"
+    }
+  ]
+}

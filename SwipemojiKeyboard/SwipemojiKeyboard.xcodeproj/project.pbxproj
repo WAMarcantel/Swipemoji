@@ -15,6 +15,18 @@
 		16EA02B11E4B786800B23EAC /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA02B01E4B786800B23EAC /* KeyboardViewController.swift */; };
 		16EA02B51E4B786800B23EAC /* Swipemoji.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 16EA02AE1E4B786800B23EAC /* Swipemoji.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		16EA02BB1E4B79F100B23EAC /* Swipemoji.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16EA02BA1E4B79F100B23EAC /* Swipemoji.xib */; };
+		16FEFC211E537A7C00C05418 /* MatchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC1E1E537A7C00C05418 /* MatchResult.swift */; };
+		16FEFC221E537A7C00C05418 /* MatchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC1E1E537A7C00C05418 /* MatchResult.swift */; };
+		16FEFC231E537A7C00C05418 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC1F1E537A7C00C05418 /* Point.swift */; };
+		16FEFC241E537A7C00C05418 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC1F1E537A7C00C05418 /* Point.swift */; };
+		16FEFC251E537A7C00C05418 /* PointCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC201E537A7C00C05418 /* PointCloud.swift */; };
+		16FEFC261E537A7C00C05418 /* PointCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC201E537A7C00C05418 /* PointCloud.swift */; };
+		16FEFC2A1E537AB900C05418 /* PointCloudModeler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC291E537AB900C05418 /* PointCloudModeler.swift */; };
+		16FEFC2B1E537AB900C05418 /* PointCloudModeler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC291E537AB900C05418 /* PointCloudModeler.swift */; };
+		16FEFC2D1E537B4800C05418 /* PointCloudLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */; };
+		16FEFC2E1E537B4800C05418 /* PointCloudLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */; };
+		16FEFC301E537B5E00C05418 /* PointDrawingCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */; };
+		16FEFC311E537B5E00C05418 /* PointDrawingCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +65,12 @@
 		16EA02B01E4B786800B23EAC /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		16EA02B21E4B786800B23EAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16EA02BA1E4B79F100B23EAC /* Swipemoji.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Swipemoji.xib; sourceTree = "<group>"; };
+		16FEFC1E1E537A7C00C05418 /* MatchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchResult.swift; sourceTree = "<group>"; };
+		16FEFC1F1E537A7C00C05418 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		16FEFC201E537A7C00C05418 /* PointCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointCloud.swift; sourceTree = "<group>"; };
+		16FEFC291E537AB900C05418 /* PointCloudModeler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointCloudModeler.swift; path = "../../PointCloud-Swift/PointClouds/PointCloudModeler.swift"; sourceTree = "<group>"; };
+		16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointCloudLibrary.swift; path = "../../PointCloud-Swift/PointClouds/PointCloudLibrary.swift"; sourceTree = "<group>"; };
+		16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointDrawingCanvas.swift; path = "../../PointCloud-Swift/PointClouds/PointDrawingCanvas.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +94,10 @@
 		16EA028C1E4B775E00B23EAC = {
 			isa = PBXGroup;
 			children = (
+				16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */,
+				16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */,
+				16FEFC281E537A9E00C05418 /* util */,
+				16FEFC271E537A8E00C05418 /* model */,
 				16EA02971E4B775E00B23EAC /* SwipemojiKeyboard */,
 				16EA02AF1E4B786800B23EAC /* Swipemoji */,
 				16EA02961E4B775E00B23EAC /* Products */,
@@ -112,6 +134,24 @@
 				16EA02BA1E4B79F100B23EAC /* Swipemoji.xib */,
 			);
 			path = Swipemoji;
+			sourceTree = "<group>";
+		};
+		16FEFC271E537A8E00C05418 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				16FEFC1E1E537A7C00C05418 /* MatchResult.swift */,
+				16FEFC1F1E537A7C00C05418 /* Point.swift */,
+				16FEFC201E537A7C00C05418 /* PointCloud.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		16FEFC281E537A9E00C05418 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				16FEFC291E537AB900C05418 /* PointCloudModeler.swift */,
+			);
+			name = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,7 +260,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16FEFC251E537A7C00C05418 /* PointCloud.swift in Sources */,
+				16FEFC2D1E537B4800C05418 /* PointCloudLibrary.swift in Sources */,
+				16FEFC2A1E537AB900C05418 /* PointCloudModeler.swift in Sources */,
+				16FEFC231E537A7C00C05418 /* Point.swift in Sources */,
 				16EA029B1E4B775E00B23EAC /* ViewController.swift in Sources */,
+				16FEFC301E537B5E00C05418 /* PointDrawingCanvas.swift in Sources */,
+				16FEFC211E537A7C00C05418 /* MatchResult.swift in Sources */,
 				16EA02991E4B775E00B23EAC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,7 +275,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16FEFC261E537A7C00C05418 /* PointCloud.swift in Sources */,
+				16FEFC2B1E537AB900C05418 /* PointCloudModeler.swift in Sources */,
+				16FEFC2E1E537B4800C05418 /* PointCloudLibrary.swift in Sources */,
+				16FEFC311E537B5E00C05418 /* PointDrawingCanvas.swift in Sources */,
+				16FEFC221E537A7C00C05418 /* MatchResult.swift in Sources */,
 				16EA02B11E4B786800B23EAC /* KeyboardViewController.swift in Sources */,
+				16FEFC241E537A7C00C05418 /* Point.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +481,7 @@
 				16EA02A91E4B775F00B23EAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		16EA02B61E4B786800B23EAC /* Build configuration list for PBXNativeTarget "Swipemoji" */ = {
 			isa = XCConfigurationList;
@@ -437,6 +490,7 @@
 				16EA02B81E4B786800B23EAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
