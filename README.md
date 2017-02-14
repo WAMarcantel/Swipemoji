@@ -14,8 +14,8 @@ An iOS keyboard extension that inputs gestures for emojis.
   - Nueral net learning
   
 # TODO:
-- [ ] Set up development environment with GitHub and XCode
-- [ ] Set up keyboard
+- [x] Set up development environment with GitHub and XCode
+- [x] Set up keyboard
 - [ ] Drawing pad view which returns point cloud (with multiple strokes)
 - [ ] Code up $P in Swift
 - [ ] Output emoji into keyboard
