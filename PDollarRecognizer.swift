@@ -24,12 +24,12 @@ class PDollarRecognizer{
     
     var numPoints = 32
     var pointOrig = Point(X:0, Y:0, ID:0)
-    var PntClouds: Array<PointCloud> = Array()
+    var PntClouds: [PointCloud]
     
     class PointCloud{
-        var Points: Array<Point> = Array()
+        var Points: [Point]
         var name: String
-        init(buildPointCloud PointCloudName: String, PointArray: Array<Point>){
+        init(buildPointCloud PointCloudName: String, PointArray: [Point]){
             name = PointCloudName;
             Points = PointArray;
             
@@ -39,7 +39,7 @@ class PDollarRecognizer{
         }
     }
     
-    func Recognize(points: Array<Point>){
+    func Recognize(points: [Point]){
         var foundPointCloud: PointCloud = nil
         points = Resample(points:points, n:mNumPoints)
         points = Scale(points:points)
@@ -68,7 +68,7 @@ class PDollarRecognizer{
         //consider replacing with averaged, weighted approach
     }
     
-    func addGesture(name: String, points: Array<Point>){
+    func addGesture(name: String, points: [Point]){
         var newPointCloud = PointCloud(name:name, Points:points)
         PntClouds.append(newPointCloud)
         var num = 0
@@ -80,7 +80,7 @@ class PDollarRecognizer{
         return num
     }
     
-    func GreedyCloudMatch(points: Array<Point>, pntCloud: PointCloud){
+    func GreedyCloudMatch(points: [Point], pntCloud: PointCloud){
         var e = 0.50
         var step = floor(pow(points.count, 1-e))
         var min = Double.infinity
@@ -92,7 +92,7 @@ class PDollarRecognizer{
         return min
     }
     
-    func CloudDistance(pts1: Array<Point>, pts2: Array<Point>, start: int){
+    func CloudDistance(pts1: [Point], pts2: [Point], start: int){
         var matched: Array<bool>
         for i in [0..pts1.count]{
             matched[k] = false
@@ -120,11 +120,11 @@ class PDollarRecognizer{
         return sum
     }
     
-    func Resample(points: Array<Points>, n: int){
-        var I = PathLength(points) / (n-1)
+    func Resample(points: [Point], n: int){
+        var I = PathLength(points) / Double(n-1)
         var D = 0.0
         
-        var newPoints: Array<Point>
+        var newPoints: [Point]
         newPoints.append(points[0])
         
         for i in 1..(points.count - 1) {
@@ -154,11 +154,12 @@ class PDollarRecognizer{
         
     }
     
-    func Scale(points: Array<Point>){
+    func Scale(points: [Point]){
         var minX = -Double.infinity
         var maxX = Double.infinity
         var minY = -Double.infinity
         var maxY = Double.infinity
+        
         for i in [0..(points.count)]{
             minX = min(minX, points[i].X)
             maxX = max(maxX, points[i].X)
@@ -166,8 +167,8 @@ class PDollarRecognizer{
             minX = max(maxY, points[i].Y)
         }
         
-        var size = max(maxX - minX, maxY - minY)
-        var newPoints: Array<Point>
+        var size = Double(max(maxX - minX, maxY - minY))
+        var newPoints: [Point]()
         
         for i in [0..(points.count)]{
             var qx = (points[i].X - minX) / size
@@ -175,14 +176,20 @@ class PDollarRecognizer{
             var p = Point(X:qx, Y:qy, points[i].ID)
             newPoints.append(p)
         }
-        
+        return newPoints
     }
     
-    func TranslateTo(points: Array<Point>, origin: Point){
+    func TranslateTo(points: [Point], origin: Point){
         var c = Centroid(points)
+        newPoints = [Point]
+        for i in [0..points.count-1]{
+            var qx = Double(points[i].X + origin.X - c.X)
+            var qy = Double(points[i].X + origin.X - c.X)
+        }
+        return newPoints
     }
     
-    func Centroid(points: Array<Point>){
+    func Centroid(points: [Point]){
         var x = 0.0
         var y = 0.0
         
@@ -198,7 +205,7 @@ class PDollarRecognizer{
         
     }
     
-    func PathDistance(pts1: Array<Point>, pts2: Array<Point>){
+    func PathDistance(pts1: [Point], pts2: [Point]){
         var d = 0.0
         for i in [0..pts.count]{
            d += EuclideanDistance(pts1[i], pts2[i])
@@ -206,7 +213,7 @@ class PDollarRecognizer{
         return d / pts.count
     }
     
-    func PathLength(points: Array<Point>){
+    func PathLength(points: [Point]){
         var d = 0.0
         for i in [1..points.count]{
             if(points[i].ID == points[i-1].ID){
