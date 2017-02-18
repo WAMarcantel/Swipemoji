@@ -40,7 +40,7 @@ class GestureMatchController: UIViewController {
             if !canvas.isEmpty() {
                 let pointCloud = PointCloud("input gesture", canvas.points)
                 
-                let matchResult = _library.recognizeFromLibrary(pointCloud)
+                //let matchResult = _library.recognizeFromLibrary(pointCloud)
                 //                let text = "\(matchResult.name), score: \(matchResult.score)"
                 
                 //print(canvas.points) //array of Point objects
@@ -55,7 +55,7 @@ class GestureMatchController: UIViewController {
                 
                 
                 
-                let text = "\(matchResult.name) "
+                //let text = "\(matchResult.name) "
                 //var proxy = textDocumentProxy as UITextDocumentProxy
                 
                 /*if let input = text as String? {
@@ -63,7 +63,7 @@ class GestureMatchController: UIViewController {
                     drawingCanvas?.clearCanvas()
                 }*/
             } else {
-                self.emojiText.text = "No match result."
+                //self.emojiText.text = "No match result."
             }
         }
         
