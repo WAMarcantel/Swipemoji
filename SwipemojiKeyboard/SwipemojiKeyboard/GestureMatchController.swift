@@ -38,18 +38,27 @@ class GestureMatchController: UIViewController {
     @IBAction func submitGesture(_ sender: Any) {
         if let canvas = drawingCanvas {
             if !canvas.isEmpty() {
-                let pointCloud = PointCloud("input gesture", canvas.points)
+                //let pointCloud = PointCloud("input gesture", canvas.points)
                 
                 //let matchResult = _library.recognizeFromLibrary(pointCloud)
                 //                let text = "\(matchResult.name), score: \(matchResult.score)"
                 
                 //print(canvas.points) //array of Point objects
+                if let dicArray = UserDefaults.standard.array(forKey: "gestures") as? [NSMutableDictionary] {
+                    var dicArrayStore = dicArray
+                    dicArrayStore.append([emojiText.text!:pointsToArray(points: canvas.points)])
+                    //_library.pointClouds.append(PointCloud(emojiText.text!, canvas.points))
+                    UserDefaults.standard.set(dicArrayStore, forKey: "gestures")
+                    
+                } else {
+                    var dicArray: [NSMutableDictionary] = []
+                    
+                    dicArray.append([emojiText.text!:pointsToArray(points: canvas.points)])
+                    //_library.pointClouds.append(PointCloud(emojiText.text!, canvas.points))
+                    
+                    UserDefaults.standard.set(dicArray, forKey: "gestures")
+                }
                 
-                var dicArray: [NSMutableDictionary] = []
-                
-                dicArray.append([emojiText.text!:pointsToArray(points: canvas.points)])
-                
-                UserDefaults.standard.set(dicArray, forKey: "gestures")
                 
                 
                 
