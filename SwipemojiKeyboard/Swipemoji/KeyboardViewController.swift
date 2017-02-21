@@ -41,6 +41,11 @@ class KeyboardViewController: UIInputViewController {
         drawingCanvas!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         drawingArea!.addSubview(drawingCanvas!)
         // Perform custom UI setup here
+        
+        keyboardView.backgroundColor = UIColor(red:0.82, green:0.84, blue:0.86, alpha:1.0)
+        
+        let gesture = UITapGestureRecognizer(target: self, action: "strokeEnded:")
+        self.drawingArea.addGestureRecognizer(gesture)
     }
     
     func loadInterface() {
@@ -60,14 +65,9 @@ class KeyboardViewController: UIInputViewController {
         drawingCanvas?.clearCanvas()
     }
     
-//    @IBAction func testButtonPressed(_ sender: Any) {
-//        print("Awwww yeah")
-//        var proxy = textDocumentProxy as UITextDocumentProxy
-//        
-//        if let input = "💩" as String? {
-//            proxy.insertText(input)
-//        }
-//    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("Poo")
+    }
     
     @IBAction func submitPressed(_ sender: Any) {
         if let canvas = drawingCanvas {
@@ -86,6 +86,11 @@ class KeyboardViewController: UIInputViewController {
 //                self.label!.text = "No match result."
             }
         }
+    }
+    
+    @IBAction func backspacePressed(_ sender: Any) {
+        var proxy = textDocumentProxy as UITextDocumentProxy
+        proxy.deleteBackward()
     }
     
     override func didReceiveMemoryWarning() {

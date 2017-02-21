@@ -96,8 +96,6 @@
 		16EA028C1E4B775E00B23EAC = {
 			isa = PBXGroup;
 			children = (
-				16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */,
-				16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */,
 				16FEFC281E537A9E00C05418 /* util */,
 				16FEFC271E537A8E00C05418 /* model */,
 				16EA02971E4B775E00B23EAC /* SwipemojiKeyboard */,
@@ -132,6 +130,8 @@
 		16EA02AF1E4B786800B23EAC /* Swipemoji */ = {
 			isa = PBXGroup;
 			children = (
+				16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */,
+				16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */,
 				16EA02B01E4B786800B23EAC /* KeyboardViewController.swift */,
 				16EA02B21E4B786800B23EAC /* Info.plist */,
 				16EA02BA1E4B79F100B23EAC /* Swipemoji.xib */,
