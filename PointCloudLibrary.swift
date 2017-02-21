@@ -26,17 +26,52 @@ class PointCloudLibrary {
         }
     }
     
-    func setArray(array: [PointCloud]){
-        pointClouds = array
-    }
+  
+    
     
     static func getDemoLibrary() -> PointCloudLibrary {
-        
         let _library = PointCloudLibrary()
+        //_library.pointClouds.append(PointCloud("",)
+        let defaults = UserDefaults.standard
+        //var gestures = defaults.array(forKey: "gestures")
+        //print(gestures)
+        if let gestures = defaults.array(forKey: "gestures") as? [NSMutableDictionary] {
+            for gesture in gestures {
+                for (key, value) in gesture {
+             
+             
+                    print("key: \(key)")
+                    print("value \(value)")
+             
+                    //let points = arraysToPoints(value)
+             
+                    var points = [] as [Point]
+                
+                    for array in value as! [NSArray] {
+                        var point = Point(x:array[0] as! Double, y:array[1] as! Double, id:array[2] as! Int)
+                        points.append(point)
+                    }
+                    
+                    print(points)
+                    _library.pointClouds.append(PointCloud(key as! String, points))
+                    
+                }
+            }
+        } else {
+            print("hallllooooooo")
+        }
+        
+        print("why isn't this working")
+        //let gestures = defaults.array(forKey: "gestures")  as! [NSMutableDictionary]
+        //print(gestures)
+        
+         print("count: \(_library.pointClouds.count)")
         _library.pointClouds.append(PointCloud("T", [
             Point(x:30, y:7, id:1), Point(x:103, y:7, id:1),
             Point(x:66, y:7, id:2), Point(x:66, y:87, id:2)]))
-        _library.pointClouds.append(PointCloud("N", [
+        print("count: \(_library.pointClouds.count)")
+        
+       /* _library.pointClouds.append(PointCloud("N", [
             Point(x:177, y:92, id:1), Point(x:177, y:2, id:1),
             Point(x:182, y:1, id:2), Point(x:246, y:95, id:2),
             Point(x:247, y:87, id:3), Point(x:247, y:1, id:3)]))
@@ -98,6 +133,25 @@ class PointCloudLibrary {
             Point(x:540,y:530,id:2),Point(x:536,y:529,id:2),Point(x:533,y:528,id:2),Point(x:529,y:529,id:2),Point(x:524,y:530,id:2),Point(x:520,y:532,id:2),Point(x:515,y:535,id:2),Point(x:511,y:539,id:2),Point(x:508,y:545,id:2),Point(x:506,y:548,id:2),Point(x:506,y:554,id:2),Point(x:509,y:558,id:2),Point(x:512,y:561,id:2),Point(x:517,y:564,id:2),Point(x:521,y:564,id:2),Point(x:527,y:563,id:2),Point(x:531,y:560,id:2),Point(x:535,y:557,id:2),Point(x:538,y:553,id:2),Point(x:542,y:548,id:2),Point(x:544,y:544,id:2),Point(x:546,y:540,id:2),Point(x:546,y:536,id:2)
             ]))
         
+        */
+
+        
         return _library
     }
+    
+    /*func arraysToPoints(arrays:[NSArray]) -> [Point] {
+        var points = [] as [Point]
+        for array in arrays {
+            var point = Point(x:array[0] as! Double, y:array[1] as! Double, id:array[2] as! Int)
+            
+            points.append(point)
+            
+            
+            
+        }
+        
+        
+        return points
+        
+    } */
 }
