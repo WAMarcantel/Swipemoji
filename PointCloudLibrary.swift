@@ -31,6 +31,7 @@ class PointCloudLibrary {
     }
     
     static func getDemoLibrary() -> PointCloudLibrary {
+        
         let _library = PointCloudLibrary()
         _library.pointClouds.append(PointCloud("T", [
             Point(x:30, y:7, id:1), Point(x:103, y:7, id:1),

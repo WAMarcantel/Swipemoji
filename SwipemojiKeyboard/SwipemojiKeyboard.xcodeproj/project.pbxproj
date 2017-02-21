@@ -70,7 +70,7 @@
 		16FEFC1F1E537A7C00C05418 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		16FEFC201E537A7C00C05418 /* PointCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointCloud.swift; sourceTree = "<group>"; };
 		16FEFC291E537AB900C05418 /* PointCloudModeler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointCloudModeler.swift; path = ../PointCloudModeler.swift; sourceTree = "<group>"; };
-		16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointCloudLibrary.swift; path = ../../PointCloudLibrary.swift; sourceTree = "<group>"; };
+		16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointCloudLibrary.swift; path = ../../../PointCloudLibrary.swift; sourceTree = "<group>"; };
 		16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointDrawingCanvas.swift; path = ../../PointDrawingCanvas.swift; sourceTree = "<group>"; };
 		1FC858C51E57730000C9141B /* GestureMatchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureMatchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
