@@ -68,9 +68,9 @@
 		16FEFC1E1E537A7C00C05418 /* MatchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchResult.swift; sourceTree = "<group>"; };
 		16FEFC1F1E537A7C00C05418 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		16FEFC201E537A7C00C05418 /* PointCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointCloud.swift; sourceTree = "<group>"; };
-		16FEFC291E537AB900C05418 /* PointCloudModeler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointCloudModeler.swift; path = "../../PointCloud-Swift/PointClouds/PointCloudModeler.swift"; sourceTree = "<group>"; };
-		16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointCloudLibrary.swift; path = "../../PointCloud-Swift/PointClouds/PointCloudLibrary.swift"; sourceTree = "<group>"; };
-		16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointDrawingCanvas.swift; path = "../../PointCloud-Swift/PointClouds/PointDrawingCanvas.swift"; sourceTree = "<group>"; };
+		16FEFC291E537AB900C05418 /* PointCloudModeler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointCloudModeler.swift; path = ../PointCloudModeler.swift; sourceTree = "<group>"; };
+		16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointCloudLibrary.swift; path = ../../PointCloudLibrary.swift; sourceTree = "<group>"; };
+		16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointDrawingCanvas.swift; path = ../../PointDrawingCanvas.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +94,6 @@
 		16EA028C1E4B775E00B23EAC = {
 			isa = PBXGroup;
 			children = (
-				16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */,
-				16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */,
 				16FEFC281E537A9E00C05418 /* util */,
 				16FEFC271E537A8E00C05418 /* model */,
 				16EA02971E4B775E00B23EAC /* SwipemojiKeyboard */,
@@ -129,6 +127,8 @@
 		16EA02AF1E4B786800B23EAC /* Swipemoji */ = {
 			isa = PBXGroup;
 			children = (
+				16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */,
+				16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */,
 				16EA02B01E4B786800B23EAC /* KeyboardViewController.swift */,
 				16EA02B21E4B786800B23EAC /* Info.plist */,
 				16EA02BA1E4B79F100B23EAC /* Swipemoji.xib */,
