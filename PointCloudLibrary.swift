@@ -30,12 +30,14 @@ class PointCloudLibrary {
     
     
     static func getDemoLibrary() -> PointCloudLibrary {
+        let defaults = UserDefaults.init(suiteName: "group.swipemoji")
+        
         let _library = PointCloudLibrary()
         //_library.pointClouds.append(PointCloud("",)
-        let defaults = UserDefaults.standard
+        //let defaults = UserDefaults.standard
         //var gestures = defaults.array(forKey: "gestures")
         //print(gestures)
-        if let gestures = defaults.array(forKey: "gestures") as? [NSMutableDictionary] {
+        if let gestures = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
             for gesture in gestures {
                 for (key, value) in gesture {
              

@@ -44,11 +44,13 @@ class GestureMatchController: UIViewController {
                 //                let text = "\(matchResult.name), score: \(matchResult.score)"
                 
                 //print(canvas.points) //array of Point objects
-                if let dicArray = UserDefaults.standard.array(forKey: "gestures") as? [NSMutableDictionary] {
+                
+                let defaults = UserDefaults.init(suiteName: "group.swipemoji")
+                if let dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
                     var dicArrayStore = dicArray
                     dicArrayStore.append([emojiText.text!:pointsToArray(points: canvas.points)])
                     //_library.pointClouds.append(PointCloud(emojiText.text!, canvas.points))
-                    UserDefaults.standard.set(dicArrayStore, forKey: "gestures")
+                    defaults!.set(dicArrayStore, forKey: "gestures")
                     
                 } else {
                     var dicArray: [NSMutableDictionary] = []
@@ -56,7 +58,7 @@ class GestureMatchController: UIViewController {
                     dicArray.append([emojiText.text!:pointsToArray(points: canvas.points)])
                     //_library.pointClouds.append(PointCloud(emojiText.text!, canvas.points))
                     
-                    UserDefaults.standard.set(dicArray, forKey: "gestures")
+                    defaults!.set(dicArray, forKey: "gestures")
                 }
                 
                 
