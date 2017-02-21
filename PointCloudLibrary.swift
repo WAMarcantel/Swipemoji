@@ -26,6 +26,10 @@ class PointCloudLibrary {
         }
     }
     
+    func setArray(array: [PointCloud]){
+        pointClouds = array
+    }
+    
     static func getDemoLibrary() -> PointCloudLibrary {
         let _library = PointCloudLibrary()
         _library.pointClouds.append(PointCloud("T", [
