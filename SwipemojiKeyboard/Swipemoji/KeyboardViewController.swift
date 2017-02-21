@@ -43,6 +43,9 @@ class KeyboardViewController: UIInputViewController {
         // Perform custom UI setup here
         
         keyboardView.backgroundColor = UIColor(red:0.82, green:0.84, blue:0.86, alpha:1.0)
+        
+        let gesture = UITapGestureRecognizer(target: self, action: "strokeEnded:")
+        self.drawingArea.addGestureRecognizer(gesture)
     }
     
     func loadInterface() {
@@ -62,6 +65,9 @@ class KeyboardViewController: UIInputViewController {
         drawingCanvas?.clearCanvas()
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("Poo")
+    }
     
     @IBAction func submitPressed(_ sender: Any) {
         if let canvas = drawingCanvas {

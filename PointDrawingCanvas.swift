@@ -52,6 +52,7 @@ class PointDrawingCanvas : UIView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.id += 1
+        print("Poo")
     }
     
     func isEmpty() -> Bool {

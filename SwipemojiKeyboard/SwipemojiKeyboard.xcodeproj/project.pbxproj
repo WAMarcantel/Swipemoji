@@ -68,9 +68,9 @@
 		16FEFC1E1E537A7C00C05418 /* MatchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchResult.swift; sourceTree = "<group>"; };
 		16FEFC1F1E537A7C00C05418 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		16FEFC201E537A7C00C05418 /* PointCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointCloud.swift; sourceTree = "<group>"; };
-		16FEFC291E537AB900C05418 /* PointCloudModeler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointCloudModeler.swift; path = "../../PointCloud-Swift/PointClouds/PointCloudModeler.swift"; sourceTree = "<group>"; };
-		16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointCloudLibrary.swift; path = "../../../PointCloud-Swift/PointClouds/PointCloudLibrary.swift"; sourceTree = "<group>"; };
-		16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointDrawingCanvas.swift; path = "../../../PointCloud-Swift/PointClouds/PointDrawingCanvas.swift"; sourceTree = "<group>"; };
+		16FEFC291E537AB900C05418 /* PointCloudModeler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointCloudModeler.swift; path = ../PointCloudModeler.swift; sourceTree = "<group>"; };
+		16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointCloudLibrary.swift; path = ../../PointCloudLibrary.swift; sourceTree = "<group>"; };
+		16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointDrawingCanvas.swift; path = ../../PointDrawingCanvas.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
