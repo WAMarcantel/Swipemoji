@@ -77,7 +77,7 @@ class GestureMatchController: UIViewController {
                 //self.emojiText.text = "No match result."
             }
         }
-        
+        self.dismiss(animated: true)
         
         
     }
