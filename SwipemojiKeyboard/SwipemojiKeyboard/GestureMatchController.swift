@@ -10,6 +10,7 @@ import UIKit
 
 class GestureMatchController: UIViewController {
 
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var emojiText: UITextField!
     
     @IBOutlet weak var canvas: UIView!
@@ -24,17 +25,32 @@ class GestureMatchController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        submitButton.layer.cornerRadius = 10
 
         drawingCanvas = PointDrawingCanvas(frame: canvas.bounds)
         drawingCanvas!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         canvas.addSubview(drawingCanvas!)
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
         
         // Do any additional setup after loading the view.
     }
+
+    @IBAction func clearPressed(_ sender: Any) {
+        drawingCanvas?.clearCanvas()
+    }
     
-    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+        
     @IBAction func submitGesture(_ sender: Any) {
         if let canvas = drawingCanvas {
             if !canvas.isEmpty() {
@@ -44,11 +60,13 @@ class GestureMatchController: UIViewController {
                 //                let text = "\(matchResult.name), score: \(matchResult.score)"
                 
                 //print(canvas.points) //array of Point objects
-                if let dicArray = UserDefaults.standard.array(forKey: "gestures") as? [NSMutableDictionary] {
+                
+                let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
+                if let dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
                     var dicArrayStore = dicArray
                     dicArrayStore.append([emojiText.text!:pointsToArray(points: canvas.points)])
                     //_library.pointClouds.append(PointCloud(emojiText.text!, canvas.points))
-                    UserDefaults.standard.set(dicArrayStore, forKey: "gestures")
+                    defaults!.set(dicArrayStore, forKey: "gestures")
                     
                 } else {
                     var dicArray: [NSMutableDictionary] = []
@@ -56,7 +74,7 @@ class GestureMatchController: UIViewController {
                     dicArray.append([emojiText.text!:pointsToArray(points: canvas.points)])
                     //_library.pointClouds.append(PointCloud(emojiText.text!, canvas.points))
                     
-                    UserDefaults.standard.set(dicArray, forKey: "gestures")
+                    defaults!.set(dicArray, forKey: "gestures")
                 }
                 
                 
@@ -75,7 +93,7 @@ class GestureMatchController: UIViewController {
                 //self.emojiText.text = "No match result."
             }
         }
-        
+        self.dismiss(animated: true)
         
         
     }
