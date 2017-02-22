@@ -30,7 +30,7 @@ class PointCloudLibrary {
     
     
     static func getDemoLibrary() -> PointCloudLibrary {
-        let defaults = UserDefaults.init(suiteName: "group.swipemoji")
+        let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
         
         let _library = PointCloudLibrary()
         //_library.pointClouds.append(PointCloud("",)

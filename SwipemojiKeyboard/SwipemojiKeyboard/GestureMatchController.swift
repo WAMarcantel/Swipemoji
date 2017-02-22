@@ -45,7 +45,7 @@ class GestureMatchController: UIViewController {
                 
                 //print(canvas.points) //array of Point objects
                 
-                let defaults = UserDefaults.init(suiteName: "group.swipemoji")
+                let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
                 if let dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
                     var dicArrayStore = dicArray
                     dicArrayStore.append([emojiText.text!:pointsToArray(points: canvas.points)])

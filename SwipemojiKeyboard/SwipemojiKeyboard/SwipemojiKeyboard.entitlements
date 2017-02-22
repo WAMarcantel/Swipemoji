@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.swipemoji</string>
+		<string>group.swipemoji.appgroup</string>
 	</array>
 </dict>
 </plist>
