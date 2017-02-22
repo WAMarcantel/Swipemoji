@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		169AFE3C1E5D4B26005FF5C3 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169AFE3B1E5D4B26005FF5C3 /* PreviewViewController.swift */; };
 		16EA02991E4B775E00B23EAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA02981E4B775E00B23EAC /* AppDelegate.swift */; };
-		16EA029B1E4B775E00B23EAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA029A1E4B775E00B23EAC /* ViewController.swift */; };
 		16EA029E1E4B775F00B23EAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16EA029C1E4B775F00B23EAC /* Main.storyboard */; };
 		16EA02A01E4B775F00B23EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16EA029F1E4B775F00B23EAC /* Assets.xcassets */; };
 		16EA02A31E4B775F00B23EAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16EA02A11E4B775F00B23EAC /* LaunchScreen.storyboard */; };
@@ -55,9 +55,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		169AFE3B1E5D4B26005FF5C3 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		16EA02951E4B775E00B23EAC /* SwipemojiKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipemojiKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16EA02981E4B775E00B23EAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		16EA029A1E4B775E00B23EAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		16EA029D1E4B775F00B23EAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		16EA029F1E4B775F00B23EAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16EA02A21E4B775F00B23EAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 			children = (
 				1FC858C71E5CFDEB00C9141B /* SwipemojiKeyboard.entitlements */,
 				16EA02981E4B775E00B23EAC /* AppDelegate.swift */,
-				16EA029A1E4B775E00B23EAC /* ViewController.swift */,
+				169AFE3B1E5D4B26005FF5C3 /* PreviewViewController.swift */,
 				16EA029C1E4B775F00B23EAC /* Main.storyboard */,
 				16EA029F1E4B775F00B23EAC /* Assets.xcassets */,
 				16EA02A11E4B775F00B23EAC /* LaunchScreen.storyboard */,
@@ -280,8 +280,8 @@
 				16FEFC251E537A7C00C05418 /* PointCloud.swift in Sources */,
 				16FEFC2D1E537B4800C05418 /* PointCloudLibrary.swift in Sources */,
 				16FEFC2A1E537AB900C05418 /* PointCloudModeler.swift in Sources */,
+				169AFE3C1E5D4B26005FF5C3 /* PreviewViewController.swift in Sources */,
 				16FEFC231E537A7C00C05418 /* Point.swift in Sources */,
-				16EA029B1E4B775E00B23EAC /* ViewController.swift in Sources */,
 				16FEFC301E537B5E00C05418 /* PointDrawingCanvas.swift in Sources */,
 				16FEFC211E537A7C00C05418 /* MatchResult.swift in Sources */,
 				16EA02991E4B775E00B23EAC /* AppDelegate.swift in Sources */,

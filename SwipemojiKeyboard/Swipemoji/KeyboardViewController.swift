@@ -40,12 +40,18 @@ class KeyboardViewController: UIInputViewController {
         
         drawingCanvas = PointDrawingCanvas(frame: drawingArea!.bounds)
         drawingCanvas!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        drawingCanvas?.backgroundColor = UIColor.white
         drawingArea!.addSubview(drawingCanvas!)
+        drawingArea.backgroundColor = UIColor.white
         // Perform custom UI setup here
         
         keyboardView.backgroundColor = UIColor(red:0.82, green:0.84, blue:0.86, alpha:1.0)
-        let gesture = UITapGestureRecognizer(target: self, action: "strokeEnded:")
+        let gesture = UITapGestureRecognizer(target: self, action: "strokeEnded")
         self.drawingArea.addGestureRecognizer(gesture)
+    }
+    
+    func strokeEnded() {
+        print("WOWWW")
     }
     
     func loadInterface() {
@@ -66,7 +72,6 @@ class KeyboardViewController: UIInputViewController {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("Poo")
     }
     
     @IBAction func submitPressed(_ sender: Any) {
@@ -75,7 +80,7 @@ class KeyboardViewController: UIInputViewController {
                 let pointCloud = PointCloud("input gesture", canvas.points)
                 let matchResult = _library.recognizeFromLibrary(pointCloud)
 //                let text = "\(matchResult.name), score: \(matchResult.score)"
-                let text = "\(matchResult.name) "
+                let text = "\(matchResult.name)"
                 var proxy = textDocumentProxy as UITextDocumentProxy
                 
                 if let input = text as String? {
