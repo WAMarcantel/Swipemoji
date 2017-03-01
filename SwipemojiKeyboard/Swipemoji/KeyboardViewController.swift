@@ -26,6 +26,8 @@ class KeyboardViewController: UIInputViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: "strokeEnded", name: NSNotification.Name(rawValue: "reload"), object: nil)
 
 //        initializeGestureLibrary()
         loadInterface();
@@ -51,7 +53,8 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func strokeEnded() {
-        print("WOWWW")
+        print("Stroke End Detected")
+        
     }
     
     func loadInterface() {
@@ -84,7 +87,6 @@ class KeyboardViewController: UIInputViewController {
                 var proxy = textDocumentProxy as UITextDocumentProxy
                 
                 if let input = text as String? {
-                    proxy.
                     proxy.adjustTextPosition(byCharacterOffset: 1)
                     proxy.deleteBackward()
                     proxy.insertText(input)
