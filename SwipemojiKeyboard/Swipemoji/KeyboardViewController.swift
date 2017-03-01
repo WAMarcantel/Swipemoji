@@ -84,7 +84,11 @@ class KeyboardViewController: UIInputViewController {
                 var proxy = textDocumentProxy as UITextDocumentProxy
                 
                 if let input = text as String? {
+                    proxy.
+                    proxy.adjustTextPosition(byCharacterOffset: 1)
+                    proxy.deleteBackward()
                     proxy.insertText(input)
+                    proxy.adjustTextPosition(byCharacterOffset: -2)
                     drawingCanvas?.clearCanvas()
                 }
             } else {
