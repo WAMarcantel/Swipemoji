@@ -17,6 +17,8 @@ class KeyboardViewController: UIInputViewController {
     var lastPoint = CGPoint.zero
     var drawingCanvas:PointDrawingCanvas?
     var _library = PointCloudLibrary.getDemoLibrary()
+    var newCharacter : Bool = true
+    var lastInput : String = ""
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -48,13 +50,42 @@ class KeyboardViewController: UIInputViewController {
         // Perform custom UI setup here
         
         keyboardView.backgroundColor = UIColor(red:0.82, green:0.84, blue:0.86, alpha:1.0)
-        let gesture = UITapGestureRecognizer(target: self, action: "strokeEnded")
-        self.drawingArea.addGestureRecognizer(gesture)
     }
     
     func strokeEnded() {
         print("Stroke End Detected")
-        
+        if let canvas = drawingCanvas {
+            if !canvas.isEmpty() {
+                let pointCloud = PointCloud("input gesture", canvas.points)
+                let matchResult = _library.recognizeFromLibrary(pointCloud)
+                //                let text = "\(matchResult.name), score: \(matchResult.score)"
+                let text = "\(matchResult.name)"
+                var proxy = textDocumentProxy as UITextDocumentProxy
+                
+                if let input = text as String? {
+                    if(newCharacter){
+                        proxy.insertText(input)
+                        newCharacter = false
+//                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                        self.lastInput = input
+                    } else {
+                        proxy.documentInputMode.customMirror
+                        for i in 1...self.lastInput.characters.count {
+//                            proxy.adjustTextPosition(byCharacterOffset: (1))
+                            proxy.deleteBackward()
+                        }
+                        proxy.insertText(input)
+//                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                        self.lastInput = input
+                    }
+
+//                    drawingCanvas?.clearCanvas()
+                }
+            } else {
+                //                self.label!.text = "No match result."
+            }
+        }
+
     }
     
     func loadInterface() {
@@ -80,19 +111,10 @@ class KeyboardViewController: UIInputViewController {
     @IBAction func submitPressed(_ sender: Any) {
         if let canvas = drawingCanvas {
             if !canvas.isEmpty() {
-                let pointCloud = PointCloud("input gesture", canvas.points)
-                let matchResult = _library.recognizeFromLibrary(pointCloud)
-//                let text = "\(matchResult.name), score: \(matchResult.score)"
-                let text = "\(matchResult.name)"
                 var proxy = textDocumentProxy as UITextDocumentProxy
-                
-                if let input = text as String? {
-                    proxy.adjustTextPosition(byCharacterOffset: 1)
-                    proxy.deleteBackward()
-                    proxy.insertText(input)
-                    proxy.adjustTextPosition(byCharacterOffset: -2)
-                    drawingCanvas?.clearCanvas()
-                }
+//                proxy.adjustTextPosition(byCharacterOffset: 1)
+                drawingCanvas?.clearCanvas()
+                newCharacter = true
             } else {
 //                self.label!.text = "No match result."
             }
