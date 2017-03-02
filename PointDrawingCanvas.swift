@@ -52,7 +52,7 @@ class PointDrawingCanvas : UIView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.id += 1
-        print("Poo")
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
     
     func isEmpty() -> Bool {
