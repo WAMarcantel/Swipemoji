@@ -21,7 +21,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="emoji" textAlignment="natural" minimumFontSize="53" translatesAutoresizingMaskIntoConstraints="NO" id="uWb-kU-jpm">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4hP-QM-eJH">
+                                <rect key="frame" x="0.0" y="248" width="375" height="419"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="try it out!" textAlignment="natural" minimumFontSize="53" translatesAutoresizingMaskIntoConstraints="NO" id="uWb-kU-jpm">
                                 <rect key="frame" x="16" y="106" width="343" height="134"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,6 +46,25 @@
                                     <segue destination="NhA-0O-R44" kind="presentation" id="epG-Hd-fUm"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="K9B-m5-cp3">
+                                <rect key="frame" x="16" y="260" width="343" height="411"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <mutableString key="text">Hi there! 🤗
+Welcome to Swipemoji
+
+Using Swipemoji Keyboard:
+1. In Settings ⚙, go to General&gt;Keyboard&gt;Keyboards to add Swipemoji to your  custom 🎹
+2. Press the 🌐 button to switch keyboards!
+
+Adding Custom Gesturemojis
+1. Add your new emoji definition to your custom dictionary with the "+" button
+2. Type in which emoji you want to define
+3. Draw your gesture
+4. Hit 👍
+5. Enjoy!</mutableString>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.72916018469999999" green="0.92976564709999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
