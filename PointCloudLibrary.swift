@@ -53,7 +53,6 @@ class PointCloudLibrary {
                 if(d < b) {
                     b = d
                     u = index
-                    intStack.push(u)
                 }
                 scores = scores.sorted{ $0 < $1 }
                 now = now + 1
