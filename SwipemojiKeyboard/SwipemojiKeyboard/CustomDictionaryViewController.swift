@@ -27,20 +27,22 @@ class CustomDictionaryViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return _library.pointClouds.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dictionaryEntryCell", for: indexPath) as! DictionaryEntryTableViewCell
+        cell.emojiLabel.text = _library.pointClouds[indexPath.row].name
+        
         return cell
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            self.dawgs.removeAtIndex(indexPath.row)
-            self.tableView.reloadData()
-        }
-    }
+//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if editingStyle == .delete {
+//            self.dawgs.removeAtIndex(indexPath.row)
+//            self.tableView.reloadData()
+//        }
+//    }
 
     /*
     // MARK: - Navigation
