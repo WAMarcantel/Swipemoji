@@ -144,101 +144,139 @@ class KeyboardViewController: UIInputViewController {
     @IBAction func option0_pressed(_ sender: Any) {
         var proxy = textDocumentProxy as UITextDocumentProxy
         var input = option0.titleLabel?.text!
-            if(newCharacter){
+        if let canvas = drawingCanvas {
+            if canvas.isEmpty(){
                 proxy.insertText(input!)
-                newCharacter = false
-                //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
-                self.lastInput = input!
-            } else {
-                proxy.documentInputMode.customMirror
-                for i in 1...self.lastInput.characters.count {
-                    //                            proxy.adjustTextPosition(byCharacterOffset: (1))
-                    proxy.deleteBackward()
-                }
-                proxy.insertText(input!)
-                //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
-                self.lastInput = input!
             }
+            else{
+        
+                if(newCharacter){
+                    proxy.insertText(input!)
+                    newCharacter = false
+                    //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                    self.lastInput = input!
+                } else {
+                    proxy.documentInputMode.customMirror
+                    for i in 1...self.lastInput.characters.count {
+                        //                            proxy.adjustTextPosition(byCharacterOffset: (1))
+                        proxy.deleteBackward()
+                    }
+                    proxy.insertText(input!)
+                    //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                    self.lastInput = input!
+                }
+            }
+        }
 
     }
     
     @IBAction func option1_pressed(_ sender: Any) {
         var proxy = textDocumentProxy as UITextDocumentProxy
         var input = option1.titleLabel?.text!
-        if(newCharacter){
-            proxy.insertText(input!)
-            newCharacter = false
-            //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
-            self.lastInput = input!
-        } else {
-            proxy.documentInputMode.customMirror
-            for i in 1...self.lastInput.characters.count {
-                //                            proxy.adjustTextPosition(byCharacterOffset: (1))
-                proxy.deleteBackward()
+        if let canvas = drawingCanvas {
+            if canvas.isEmpty(){
+                proxy.insertText(input!)
             }
-            proxy.insertText(input!)
-            //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
-            self.lastInput = input!
+            else {
+                if(newCharacter){
+                    proxy.insertText(input!)
+                    newCharacter = false
+                    //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                    self.lastInput = input!
+                } else {
+                    proxy.documentInputMode.customMirror
+                    for i in 1...self.lastInput.characters.count {
+                        //                            proxy.adjustTextPosition(byCharacterOffset: (1))
+                        proxy.deleteBackward()
+                    }
+                    proxy.insertText(input!)
+                    //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                    self.lastInput = input!
+                }
+            }
         }
     }
     
     @IBAction func option2_pressed(_ sender: Any) {
         var proxy = textDocumentProxy as UITextDocumentProxy
         var input = option2.titleLabel?.text!
-        if(newCharacter){
-            proxy.insertText(input!)
-            newCharacter = false
-            //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
-            self.lastInput = input!
-        } else {
-            proxy.documentInputMode.customMirror
-            for i in 1...self.lastInput.characters.count {
-                //                            proxy.adjustTextPosition(byCharacterOffset: (1))
-                proxy.deleteBackward()
+        if let canvas = drawingCanvas {
+            if canvas.isEmpty(){
+                proxy.insertText(input!)
             }
-            proxy.insertText(input!)
-            //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
-            self.lastInput = input!
+            else{
+                
+                if(newCharacter){
+                    proxy.insertText(input!)
+                    newCharacter = false
+                    //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                    self.lastInput = input!
+                } else {
+                    proxy.documentInputMode.customMirror
+                    for i in 1...self.lastInput.characters.count {
+                        //                            proxy.adjustTextPosition(byCharacterOffset: (1))
+                        proxy.deleteBackward()
+                    }
+                    proxy.insertText(input!)
+                    //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                    self.lastInput = input!
+                }
+            }
         }
     }
     
     @IBAction func option3_pressed(_ sender: Any) {
         var proxy = textDocumentProxy as UITextDocumentProxy
         var input = option3.titleLabel?.text!
-        if(newCharacter){
-            proxy.insertText(input!)
-            newCharacter = false
-            //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
-            self.lastInput = input!
-        } else {
-            proxy.documentInputMode.customMirror
-            for i in 1...self.lastInput.characters.count {
-                //                            proxy.adjustTextPosition(byCharacterOffset: (1))
-                proxy.deleteBackward()
+        if let canvas = drawingCanvas {
+            if canvas.isEmpty(){
+                proxy.insertText(input!)
             }
-            proxy.insertText(input!)
-            //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
-            self.lastInput = input!
-        }
-    }
+            else{
+                
+                if(newCharacter){
+                    proxy.insertText(input!)
+                    newCharacter = false
+                    //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                    self.lastInput = input!
+                } else {
+                    proxy.documentInputMode.customMirror
+                    for i in 1...self.lastInput.characters.count {
+                        //                            proxy.adjustTextPosition(byCharacterOffset: (1))
+                        proxy.deleteBackward()
+                    }
+                    proxy.insertText(input!)
+                    //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                    self.lastInput = input!
+                }
+            }
+        }    }
     
     @IBAction func option4_pressed(_ sender: Any) {
         var proxy = textDocumentProxy as UITextDocumentProxy
         var input = option4.titleLabel?.text!
-        if(newCharacter){
-            proxy.insertText(input!)
-            newCharacter = false
-            //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
-            self.lastInput = input!
-        } else {
-            proxy.documentInputMode.customMirror
-            for i in 1...self.lastInput.characters.count {
-                //                            proxy.adjustTextPosition(byCharacterOffset: (1))
-                proxy.deleteBackward()
+        if let canvas = drawingCanvas {
+            if canvas.isEmpty(){
+                proxy.insertText(input!)
             }
-            proxy.insertText(input!)
-            //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
-            self.lastInput = input!
+            else{
+                
+                if(newCharacter){
+                    proxy.insertText(input!)
+                    newCharacter = false
+                    //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                    self.lastInput = input!
+                } else {
+                    proxy.documentInputMode.customMirror
+                    for i in 1...self.lastInput.characters.count {
+                        //                            proxy.adjustTextPosition(byCharacterOffset: (1))
+                        proxy.deleteBackward()
+                    }
+                    proxy.insertText(input!)
+                    //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                    self.lastInput = input!
+                }
+            }
         }
     }
     
