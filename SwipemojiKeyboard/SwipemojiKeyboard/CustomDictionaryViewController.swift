@@ -26,6 +26,12 @@ class CustomDictionaryViewController: UIViewController, UITableViewDelegate, UIT
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func closePressed(_ sender: Any) {
+//        _ = navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+
+    }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return _library.pointClouds.count
     }
