@@ -19,6 +19,48 @@ class PointCloudLibrary {
         var it = 0
         var now = 0
         
+
+        
+        for (index, pointCloud) in pointClouds.enumerated() {
+           
+            if let d = inputGesture.greedyMatch(pointCloud) {
+
+                
+                if(d < b) {
+                    b = d
+                    u = index
+                }
+            }
+            
+        }
+        
+        
+        print("break")
+        
+        
+        if(u == -1) {
+            return MatchResult(name: "No match", score: 0.0)
+        } else {
+            print(u)
+            let score = round(max((b - 2.0) / -2.0, 0.0) * 100)/100
+            return MatchResult(name:pointClouds[u].name, score:score)
+        }
+    }
+    
+    func recognizeoptionsFromLibrary(_ inputGesture:PointCloud) -> Array<String> {
+        
+        var dictionary: [Double:Int] = [:]
+        var scores: [Double] = []
+        var answer: [String] = []
+        var b = Double.infinity
+        var k = Double.infinity
+        var u = -1
+        var i = 0
+        var j = 4
+        var what = 0
+        var it = 0
+        var now = 0
+        
         for (index, pointCloud) in pointClouds.enumerated() {
             if let l = inputGesture.greedyMatch(pointCloud) {
                 if (i < 5){
@@ -31,12 +73,12 @@ class PointCloudLibrary {
         scores = scores.sorted{ $0 < $1 }
         
         for (index, pointCloud) in pointClouds.enumerated() {
-           
+            
             if let d = inputGesture.greedyMatch(pointCloud) {
                 if (now >= 5){
                     if (now == 5){
                         print("YES")
-                        }
+                    }
                     while (j >= 0){
                         print("comparing \(scores[j]) to \(d)")
                         if (scores[j] > d){
@@ -60,23 +102,25 @@ class PointCloudLibrary {
             
         }
         
-        
-        while (it < 5){
-            print(dictionary[scores[it]]!)
-            it = it + 1
+        if(u == -1){
+            var er = 0
+            while (er < 5){
+                answer.append("💩")
+                er = er + 1
+            }
+        }
+        else {
+            
+            
+            while (it < 5){
+                print(dictionary[scores[it]]!)
+                answer.append(pointClouds[dictionary[scores[it]]!].name)
+                it = it + 1
+            }
         }
         
+        return answer
         
-        print("break")
-        
-        
-        if(u == -1) {
-            return MatchResult(name: "No match", score: 0.0)
-        } else {
-            print(u)
-            let score = round(max((b - 2.0) / -2.0, 0.0) * 100)/100
-            return MatchResult(name:pointClouds[u].name, score:score)
-        }
     }
     
     
