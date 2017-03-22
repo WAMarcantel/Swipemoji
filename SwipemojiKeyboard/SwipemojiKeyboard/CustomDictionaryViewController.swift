@@ -37,6 +37,29 @@ class CustomDictionaryViewController: UIViewController, UITableViewDelegate, UIT
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .delete
+        {
+            print("ASDAS")
+            let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
+            if let dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
+                var dicArrayStore = dicArray
+                dicArrayStore.remove(at: indexPath.row)
+                defaults!.set(dicArrayStore, forKey: "gestures")
+            }
+            _library = PointCloudLibrary.getDemoLibrary()
+            tableView.reloadData()
+//            yourArray.remove(at: indexPath.row)
+//            tblDltRow.reloadData()
+        }
+    }
+    
 //    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 //        if editingStyle == .delete {
 //            self.dawgs.removeAtIndex(indexPath.row)
