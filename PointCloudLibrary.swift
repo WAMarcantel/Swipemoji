@@ -1,5 +1,5 @@
 import UIKit
-
+import Firebase
 
 class PointCloudLibrary {
     // empty point cloud array.
@@ -161,7 +161,6 @@ class PointCloudLibrary {
             print("hallllooooooo")
         }
         
-        print("why isn't this working")
         //let gestures = defaults.array(forKey: "gestures")  as! [NSMutableDictionary]
         //print(gestures)
         
