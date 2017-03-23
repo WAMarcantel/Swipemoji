@@ -11,7 +11,9 @@ import UIKit
 class DictionaryEntryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var emojiLabel: UILabel!
-    
+    @IBOutlet weak var gestureDefinitionView: UIView!
+    var drawingCanvas:PointDisplayCanvas?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

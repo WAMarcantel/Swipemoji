@@ -12,6 +12,7 @@ class CustomDictionaryViewController: UIViewController, UITableViewDelegate, UIT
     
     var _library = PointCloudLibrary.getDemoLibrary()
 
+
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -39,6 +40,11 @@ class CustomDictionaryViewController: UIViewController, UITableViewDelegate, UIT
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dictionaryEntryCell", for: indexPath) as! DictionaryEntryTableViewCell
         cell.emojiLabel.text = _library.pointClouds[indexPath.row].name
+        
+        cell.drawingCanvas = PointDisplayCanvas(frame: cell.gestureDefinitionView.bounds)
+        cell.drawingCanvas?.drawPointCloud(drawingPoints: _library.pointClouds[indexPath.row]._points)
+        cell.drawingCanvas!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        cell.gestureDefinitionView.addSubview(cell.drawingCanvas!)
         
         return cell
     }
