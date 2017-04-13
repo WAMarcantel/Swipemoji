@@ -2,6 +2,7 @@ import UIKit
 
 class PointCloud {
     var name:String = ""
+    var count:Int = 0
     var _points:[Point] = [Point]()
     
     init(_ name:String, _ points:[Point]) {

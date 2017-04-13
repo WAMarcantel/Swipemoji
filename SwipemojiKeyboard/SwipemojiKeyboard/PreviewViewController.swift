@@ -21,6 +21,7 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var popGestureView: UIView!
     @IBOutlet weak var popEmojiLabel: UILabel!
     @IBOutlet weak var popEmojiView: UIView!
+    @IBOutlet weak var popCountLabel: UILabel!
     
     @IBOutlet weak var viewOptionSegmentedControl: UISegmentedControl!
     override func viewDidLoad() {
@@ -86,6 +87,7 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
         drawingCanvas.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         popGestureView.addSubview(drawingCanvas)
         popEmojiLabel.text = _library.pointClouds[indexPath.item].name
+        popCountLabel.text = String(_library.pointClouds[indexPath.item].count)
         
         popUpIndex = indexPath.item
     }

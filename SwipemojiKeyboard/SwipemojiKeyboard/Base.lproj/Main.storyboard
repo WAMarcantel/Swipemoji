@@ -190,6 +190,7 @@
                     <connections>
                         <outlet property="collectionView" destination="OO8-mV-tjd" id="5CX-aH-FiS"/>
                         <outlet property="popBlackBack" destination="3J7-OO-yCu" id="z8x-6r-jBi"/>
+                        <outlet property="popCountLabel" destination="exo-Do-0Hx" id="N3P-Ue-6Q1"/>
                         <outlet property="popEmojiLabel" destination="bXH-6u-3aV" id="yTm-A9-TbT"/>
                         <outlet property="popEmojiView" destination="LBe-na-pHx" id="JKB-Yf-jrI"/>
                         <outlet property="popGestureView" destination="KHG-XM-ceA" id="hxb-o3-LUC"/>
