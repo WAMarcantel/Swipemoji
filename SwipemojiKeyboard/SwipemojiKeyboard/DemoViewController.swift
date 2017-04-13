@@ -41,7 +41,6 @@ class DemoViewController: UIViewController {
             self.hypeAlert.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: { (finished: Bool) in
             self.resetMatchingGame()
-            
             UIView.animate(withDuration: 0.3, animations: {
                 self.hypeAlert.alpha = 0
             }, completion: { (finished: Bool) in
@@ -60,6 +59,7 @@ class DemoViewController: UIViewController {
     
     func resetMatchingGame(){
         emojiLabel.text = getRandomEmoji()
+        self.inputTextField.text = ""
     }
     
     func getRandomEmoji() -> String{
@@ -70,7 +70,6 @@ class DemoViewController: UIViewController {
     @IBAction func inputEmojiChanged(_ sender: Any) {
         if(inputTextField.text! == emojiLabel.text!){
             correctAlert()
-            inputTextField.text = ""
         }
     }
 
