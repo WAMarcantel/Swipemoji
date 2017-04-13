@@ -149,6 +149,9 @@
                                         <rect key="frame" x="240" y="8" width="45" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Delete"/>
+                                        <connections>
+                                            <action selector="deletePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="duL-xp-7vS"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exo-Do-0Hx">
                                         <rect key="frame" x="157" y="71" width="110" height="88"/>

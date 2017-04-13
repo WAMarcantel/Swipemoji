@@ -13,6 +13,7 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var collectionView: UICollectionView!
     var _library = PointCloudLibrary.getDemoLibrary()
     var isEmojiCollection = true
+    var popUpIndex : Int?
     
     
     @IBOutlet weak var popUpView: UIView!
@@ -67,10 +68,25 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
             cell.gestureView.isHidden = false
             cell.emojiLabel.isHidden = true
         }
-        
         return cell
     }
     
+    // MARK: - Pop Up
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // handle tap events
+        print("You selected cell #\(indexPath.item)!")
+        
+        presentPop()
+        
+        let drawingCanvas = PointDisplayCanvas(frame: popGestureView.bounds)
+        drawingCanvas.drawPointCloud(drawingPoints: _library.pointClouds[indexPath.item]._points)
+        drawingCanvas.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        popGestureView.addSubview(drawingCanvas)
+        popEmojiLabel.text = _library.pointClouds[indexPath.item].name
+        
+        popUpIndex = indexPath.item
+    }
     
     @IBAction func popBackPressed(_ sender: Any) {
         dismissPop()
@@ -90,19 +106,22 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // handle tap events
-        print("You selected cell #\(indexPath.item)!")
-
-        presentPop()
-        
-        let drawingCanvas = PointDisplayCanvas(frame: popGestureView.bounds)
-        drawingCanvas.drawPointCloud(drawingPoints: _library.pointClouds[indexPath.item]._points)
-        drawingCanvas.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        popGestureView.addSubview(drawingCanvas)
-        popEmojiLabel.text = _library.pointClouds[indexPath.item].name
-        
+    @IBAction func deletePressed(_ sender: Any) {
+        deleteEmoji(indexRow: self.popUpIndex!)
+        dismissPop()
+        self.collectionView.reloadData()
     }
+    
+    func deleteEmoji(indexRow : Int){
+        let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
+        if let dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
+            var dicArrayStore = dicArray
+            dicArrayStore.remove(at: indexRow)
+            defaults!.set(dicArrayStore, forKey: "gestures")
+        }
+        _library = PointCloudLibrary.getDemoLibrary()
+    }
+    
 
     /*
     // MARK: - Navigation
