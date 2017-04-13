@@ -12,6 +12,6 @@ class emojiCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var gestureView: UIView!
-    var drawingCanvas:PointDisplayCanvas?
+    var emojiDrawingCanvas:PointDisplayCanvas?
 
 }

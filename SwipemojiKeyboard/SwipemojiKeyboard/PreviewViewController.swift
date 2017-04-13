@@ -30,7 +30,7 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
         self.popUpView.center.y = 1000
         
         self.popEmojiView.layer.cornerRadius = 62.5
-        self.popEmojiView.layer.borderColor = UIColor.lightGray.cgColor
+        self.popEmojiView.layer.borderColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0).cgColor
          self.popEmojiView.layer.borderWidth = 2
         self.popUpView.layer.cornerRadius = 25
         
@@ -61,13 +61,15 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
             cell.gestureView.isHidden = true
             cell.emojiLabel.isHidden = false
         } else {
-            cell.drawingCanvas = PointDisplayCanvas(frame: cell.gestureView.bounds)
-            cell.drawingCanvas?.drawPointCloud(drawingPoints: _library.pointClouds[indexPath.row]._points)
-            cell.drawingCanvas!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            cell.gestureView.addSubview(cell.drawingCanvas!)
+            cell.emojiDrawingCanvas = PointDisplayCanvas(frame: cell.gestureView.bounds)
+            cell.emojiDrawingCanvas?.drawPointCloud(drawingPoints: _library.pointClouds[indexPath.row]._points)
+            cell.emojiDrawingCanvas!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            cell.gestureView.addSubview(cell.emojiDrawingCanvas!)
             cell.gestureView.isHidden = false
             cell.emojiLabel.isHidden = true
         }
+        
+        cell.layer.cornerRadius = 6
         return cell
     }
     
