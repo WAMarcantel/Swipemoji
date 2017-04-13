@@ -14,10 +14,21 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
     var _library = PointCloudLibrary.getDemoLibrary()
     var isEmojiCollection = true
     
+    
+    @IBOutlet weak var popUpView: UIView!
+    @IBOutlet weak var popBlackBack: UIView!
+    @IBOutlet weak var popGestureView: UIView!
+    @IBOutlet weak var popEmojiLabel: UILabel!
+    @IBOutlet weak var popEmojiView: UIView!
+    
     @IBOutlet weak var viewOptionSegmentedControl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.popBlackBack.alpha = 0
+        self.popUpView.center.y = 1000
+        
+        self.popEmojiView.layer.cornerRadius = 62.5
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,11 +79,37 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
         return cell
     }
     
-    // MARK: - UICollectionViewDelegate protocol
+    
+    @IBAction func popBackPressed(_ sender: Any) {
+        dismissPop()
+    }
+    
+    func presentPop(){
+        UIView.animate(withDuration: 0.5) {
+            self.popBlackBack.alpha = 0.5
+            self.popUpView.center.y = 340
+        }
+    }
+    
+    func dismissPop(){
+        UIView.animate(withDuration: 0.5) {
+            self.popBlackBack.alpha = 0
+            self.popUpView.center.y = 1000
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
         print("You selected cell #\(indexPath.item)!")
+
+        presentPop()
+        
+        let drawingCanvas = PointDisplayCanvas(frame: popGestureView.bounds)
+        drawingCanvas.drawPointCloud(drawingPoints: _library.pointClouds[indexPath.item]._points)
+        drawingCanvas.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        popGestureView.addSubview(drawingCanvas)
+        popEmojiLabel.text = _library.pointClouds[indexPath.item].name
+        
     }
 
     /*
