@@ -140,8 +140,8 @@ class PointCloudLibrary {
                 for (key, value) in gesture {
              
              
-                    print("key: \(key)")
-                    print("value \(value)")
+//                    print("key: \(key)")
+//                    print("value \(value)")
              
                     //let points = arraysToPoints(value)
              
@@ -152,7 +152,7 @@ class PointCloudLibrary {
                         points.append(point)
                     }
                     
-                    print(points)
+//                    print(points)
                     _library.pointClouds.append(PointCloud(key as! String, points))
                     
                 }
@@ -166,10 +166,10 @@ class PointCloudLibrary {
         //print(gestures)
         
          print("count: \(_library.pointClouds.count)")
-        _library.pointClouds.append(PointCloud("T", [
-            Point(x:30, y:7, id:1), Point(x:103, y:7, id:1),
-            Point(x:66, y:7, id:2), Point(x:66, y:87, id:2)]))
-        print("count: \(_library.pointClouds.count)")
+//        _library.pointClouds.append(PointCloud("T", [
+//            Point(x:30, y:7, id:1), Point(x:103, y:7, id:1),
+//            Point(x:66, y:7, id:2), Point(x:66, y:87, id:2)]))
+//        print("count: \(_library.pointClouds.count)")
         
        /* _library.pointClouds.append(PointCloud("N", [
             Point(x:177, y:92, id:1), Point(x:177, y:2, id:1),

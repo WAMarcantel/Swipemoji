@@ -118,7 +118,6 @@ class KeyboardViewController: UIInputViewController {
     
     @IBAction func clearButtonPressed(_ sender: Any) {
         drawingCanvas?.clearCanvas()
-        newCharacter = false
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -140,8 +139,6 @@ class KeyboardViewController: UIInputViewController {
     @IBAction func backspacePressed(_ sender: Any) {
         var proxy = textDocumentProxy as UITextDocumentProxy
         proxy.deleteBackward()
-        drawingCanvas?.clearCanvas()
-        newCharacter = true
     }
     
     @IBAction func option0_pressed(_ sender: Any) {
@@ -150,10 +147,9 @@ class KeyboardViewController: UIInputViewController {
         if let canvas = drawingCanvas {
             if canvas.isEmpty(){
                 proxy.insertText(input!)
-                newCharacter = true
             }
-            else {
-                drawingCanvas?.clearCanvas()
+            else{
+        
                 if(newCharacter){
                     proxy.insertText(input!)
                     newCharacter = false
@@ -168,7 +164,6 @@ class KeyboardViewController: UIInputViewController {
                     proxy.insertText(input!)
                     //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
                     self.lastInput = input!
-                    newCharacter = true
                 }
             }
         }
@@ -181,10 +176,8 @@ class KeyboardViewController: UIInputViewController {
         if let canvas = drawingCanvas {
             if canvas.isEmpty(){
                 proxy.insertText(input!)
-                newCharacter = true
             }
             else {
-                drawingCanvas?.clearCanvas()
                 if(newCharacter){
                     proxy.insertText(input!)
                     newCharacter = false
@@ -199,7 +192,6 @@ class KeyboardViewController: UIInputViewController {
                     proxy.insertText(input!)
                     //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
                     self.lastInput = input!
-                    newCharacter = true
                 }
             }
         }
@@ -211,10 +203,9 @@ class KeyboardViewController: UIInputViewController {
         if let canvas = drawingCanvas {
             if canvas.isEmpty(){
                 proxy.insertText(input!)
-                newCharacter = true
             }
-            else {
-                drawingCanvas?.clearCanvas()
+            else{
+                
                 if(newCharacter){
                     proxy.insertText(input!)
                     newCharacter = false
@@ -229,7 +220,6 @@ class KeyboardViewController: UIInputViewController {
                     proxy.insertText(input!)
                     //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
                     self.lastInput = input!
-                    newCharacter = true
                 }
             }
         }
@@ -241,10 +231,9 @@ class KeyboardViewController: UIInputViewController {
         if let canvas = drawingCanvas {
             if canvas.isEmpty(){
                 proxy.insertText(input!)
-                newCharacter = true
             }
-            else {
-                drawingCanvas?.clearCanvas()
+            else{
+                
                 if(newCharacter){
                     proxy.insertText(input!)
                     newCharacter = false
@@ -259,11 +248,9 @@ class KeyboardViewController: UIInputViewController {
                     proxy.insertText(input!)
                     //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
                     self.lastInput = input!
-                    newCharacter = true
                 }
             }
-        }
-    }
+        }    }
     
     @IBAction func option4_pressed(_ sender: Any) {
         var proxy = textDocumentProxy as UITextDocumentProxy
@@ -271,10 +258,9 @@ class KeyboardViewController: UIInputViewController {
         if let canvas = drawingCanvas {
             if canvas.isEmpty(){
                 proxy.insertText(input!)
-                newCharacter = true
             }
-            else {
-                drawingCanvas?.clearCanvas()
+            else{
+                
                 if(newCharacter){
                     proxy.insertText(input!)
                     newCharacter = false
@@ -289,7 +275,6 @@ class KeyboardViewController: UIInputViewController {
                     proxy.insertText(input!)
                     //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
                     self.lastInput = input!
-                    newCharacter = true
                 }
             }
         }
