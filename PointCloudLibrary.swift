@@ -140,8 +140,8 @@ class PointCloudLibrary {
                 for (key, value) in gesture {
              
              
-                    print("key: \(key)")
-                    print("value \(value)")
+//                    print("key: \(key)")
+//                    print("value \(value)")
              
                     //let points = arraysToPoints(value)
              
@@ -152,7 +152,7 @@ class PointCloudLibrary {
                         points.append(point)
                     }
                     
-                    print(points)
+//                    print(points)
                     _library.pointClouds.append(PointCloud(key as! String, points))
                     
                 }
