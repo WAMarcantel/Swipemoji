@@ -10,6 +10,7 @@ import UIKit
 
 class GestureMatchController: UIViewController {
 
+    var initialText : String?
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var emojiText: UITextField!
     
@@ -26,7 +27,7 @@ class GestureMatchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.layer.cornerRadius = 10
-
+        emojiText.text = initialText
         drawingCanvas = PointDrawingCanvas(frame: canvas.bounds)
         drawingCanvas!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         canvas.addSubview(drawingCanvas!)
@@ -43,6 +44,10 @@ class GestureMatchController: UIViewController {
 
     @IBAction func clearPressed(_ sender: Any) {
         drawingCanvas?.clearCanvas()
+    }
+    
+    @IBAction func closePressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     //Calls this function when the tap is recognized.
@@ -64,6 +69,9 @@ class GestureMatchController: UIViewController {
                 let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
                 if let dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
                     var dicArrayStore = dicArray
+                    dicArrayStore = dicArrayStore.filter({ (dic) -> Bool in
+                        dic.allKeys[0] as! String != emojiText.text!
+                    })
                     dicArrayStore.append([emojiText.text!:pointsToArray(points: canvas.points)])
                     //_library.pointClouds.append(PointCloud(emojiText.text!, canvas.points))
                     defaults!.set(dicArrayStore, forKey: "gestures")
