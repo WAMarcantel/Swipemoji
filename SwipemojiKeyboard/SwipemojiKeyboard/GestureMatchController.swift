@@ -46,6 +46,10 @@ class GestureMatchController: UIViewController {
         drawingCanvas?.clearCanvas()
     }
     
+    @IBAction func closePressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
