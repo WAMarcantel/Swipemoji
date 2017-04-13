@@ -29,6 +29,10 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
         self.popUpView.center.y = 1000
         
         self.popEmojiView.layer.cornerRadius = 62.5
+        self.popEmojiView.layer.borderColor = UIColor.lightGray.cgColor
+         self.popEmojiView.layer.borderWidth = 2
+        self.popUpView.layer.cornerRadius = 25
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,15 +41,6 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     @IBAction func viewOptionChanged(_ sender: Any) {
-        switch viewOptionSegmentedControl.selectedSegmentIndex
-        {
-            case 0:
-                isEmojiCollection = false
-            case 1:
-                isEmojiCollection = true
-            default:
-                break
-        }
         self.collectionView.reloadData()
     }
     
@@ -72,9 +67,6 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
             cell.gestureView.isHidden = false
             cell.emojiLabel.isHidden = true
         }
-
-        
-        // Use the outlet in our custom class to get a reference to the UILabel in the cell
         
         return cell
     }
