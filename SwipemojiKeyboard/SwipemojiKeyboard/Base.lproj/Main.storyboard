@@ -21,6 +21,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3J7-OO-yCu" customClass="UIControl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="popBackPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a77-OH-Ie1"/>
+                                </connections>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3y4-dJ-WI5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="105"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -118,15 +126,10 @@
                                 <state key="normal" title="demo">
                                     <color key="titleColor" red="0.62982327169999996" green="0.67986592040000005" blue="0.69362980770000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                            </button>
-                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3J7-OO-yCu" customClass="UIControl">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <action selector="popBackPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a77-OH-Ie1"/>
+                                    <segue destination="P7N-Kj-soZ" kind="presentation" id="5Fb-z8-TuF"/>
                                 </connections>
-                            </view>
+                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrv-dd-9Si">
                                 <rect key="frame" x="38" y="238" width="299" height="210"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -201,10 +204,10 @@
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
         </scene>
-        <!--View Controller-->
+        <!--Demo View Controller-->
         <scene sceneID="QRh-6v-0mw">
             <objects>
-                <viewController id="P7N-Kj-soZ" sceneMemberID="viewController">
+                <viewController id="P7N-Kj-soZ" customClass="DemoViewController" customModule="SwipemojiKeyboard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nqQ-2q-OPC"/>
                         <viewControllerLayoutGuide type="bottom" id="lsa-Zf-Zt5"/>
@@ -221,21 +224,60 @@
                                 <state key="normal" title="❌">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="dismissPressed:" destination="P7N-Kj-soZ" eventType="touchUpInside" id="738-8E-Jc9"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="type some fun here" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="5Z0-Fc-l1D">
-                                <rect key="frame" x="16" y="111" width="343" height="71"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K3C-rL-gft">
+                                <rect key="frame" x="132" y="99" width="110" height="110"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.34460216030000002" green="0.62160663059999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="match me!" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="5Z0-Fc-l1D">
+                                <rect key="frame" x="16" y="239" width="343" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="inputEmojiChanged:" destination="P7N-Kj-soZ" eventType="editingChanged" id="rYs-2r-yNt"/>
+                                </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKb-ZW-DlH">
+                                <rect key="frame" x="118" y="109" width="139" height="91"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KnU-Bc-NLB">
+                                <rect key="frame" x="77" y="68" width="220" height="220"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="😜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1F3-KC-D61">
+                                        <rect key="frame" x="-2" y="41" width="224" height="139"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="115"/>
+                                        <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.067508741857351562" green="1" blue="0.43216412873391175" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="emojiLabel" destination="vKb-ZW-DlH" id="Gzc-he-k4n"/>
+                        <outlet property="emojiView" destination="K3C-rL-gft" id="g43-LA-Agb"/>
+                        <outlet property="hypeAlert" destination="KnU-Bc-NLB" id="ejf-m8-hsD"/>
+                        <outlet property="hypeLabel" destination="1F3-KC-D61" id="Pif-97-aIR"/>
+                        <outlet property="inputTextField" destination="5Z0-Fc-l1D" id="2z7-SG-c6r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bk0-Om-wUH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="969" y="-415"/>
+            <point key="canvasLocation" x="968.79999999999995" y="-415.14242878560725"/>
         </scene>
         <!--Gesture Match Controller-->
         <scene sceneID="1jB-IQ-iNJ">
