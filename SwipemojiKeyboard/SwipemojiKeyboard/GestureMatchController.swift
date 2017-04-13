@@ -10,6 +10,7 @@ import UIKit
 
 class GestureMatchController: UIViewController {
 
+    var initialText : String?
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var emojiText: UITextField!
     
@@ -26,7 +27,7 @@ class GestureMatchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.layer.cornerRadius = 10
-
+        emojiText.text = initialText
         drawingCanvas = PointDrawingCanvas(frame: canvas.bounds)
         drawingCanvas!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         canvas.addSubview(drawingCanvas!)

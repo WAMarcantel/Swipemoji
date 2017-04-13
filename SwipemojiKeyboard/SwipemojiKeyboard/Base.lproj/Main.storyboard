@@ -139,6 +139,9 @@
                                         <rect key="frame" x="15" y="8" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Edit"/>
+                                        <connections>
+                                            <segue destination="NhA-0O-R44" kind="presentation" identifier="editSegue" id="6AG-1N-ewR"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LBe-na-pHx">
                                         <rect key="frame" x="87" y="-66" width="124" height="124"/>
@@ -298,4 +301,7 @@
             <point key="canvasLocation" x="1169" y="407"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="6AG-1N-ewR"/>
+    </inferredMetricsTieBreakers>
 </document>
