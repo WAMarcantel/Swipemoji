@@ -38,7 +38,11 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.popBlackBack.alpha = 0
+        self.popUpView.center.y = 1000
         _library = PointCloudLibrary.getDemoLibrary()
         self.collectionView.reloadData()
     }
