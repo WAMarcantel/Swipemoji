@@ -24,6 +24,7 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var popCountLabel: UILabel!
     
     @IBOutlet weak var viewOptionSegmentedControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -35,6 +36,11 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
          self.popEmojiView.layer.borderWidth = 2
         self.popUpView.layer.cornerRadius = 25
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        _library = PointCloudLibrary.getDemoLibrary()
+        self.collectionView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
