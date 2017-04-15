@@ -36,6 +36,7 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: "strokeEnded", name: NSNotification.Name(rawValue: "reload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardViewController.clearUp), name: NSNotification.Name(rawValue: "clear"), object: nil)
 
 //        initializeGestureLibrary()
         loadInterface();
@@ -114,6 +115,11 @@ class KeyboardViewController: UIInputViewController {
         
         // copy the background color
         view.backgroundColor = keyboardView.backgroundColor
+    }
+    
+    public func clearUp(){
+        print("HYPE!")
+        drawingCanvas?.clearCanvas()
     }
     
     @IBAction func clearButtonPressed(_ sender: Any) {
