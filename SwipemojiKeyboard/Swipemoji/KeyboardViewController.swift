@@ -8,12 +8,14 @@
 
 import UIKit
 
-class KeyboardViewController: UIInputViewController {
+class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet var nextKeyboardButton: UIButton!
     @IBOutlet var keyboardView: UIView!
     @IBOutlet weak var drawingArea: UIView!
 
+    @IBOutlet weak var suggestionView: UIView!
     @IBOutlet weak var option0: UIButton!
     @IBOutlet weak var option1: UIButton!
     @IBOutlet weak var option2: UIButton!
@@ -25,6 +27,7 @@ class KeyboardViewController: UIInputViewController {
     var newCharacter : Bool = true
     var lastInput : String = ""
     
+    let cellId = "suggestionCell"
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -57,6 +60,36 @@ class KeyboardViewController: UIInputViewController {
         // Perform custom UI setup here
         
         keyboardView.backgroundColor = UIColor(red:0.82, green:0.84, blue:0.86, alpha:1.0)
+        
+        
+        createSuggestionView()
+    }
+    
+    func createSuggestionView(){
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    collectionView.register(SuggestionCollectionViewCell.self, forCellWithReuseIdentifier: self.cellId)
+
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    // make a cell for each cell index path
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        // get a reference to our storyboard cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! SuggestionCollectionViewCell
+        cell.backgroundColor = UIColor.blue
+        return cell
+    }
+    
+    // MARK: - UICollectionViewDelegate protocol
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // handle tap events
+        print("You selected cell #\(indexPath.item)!")
     }
     
     func strokeEnded() {
