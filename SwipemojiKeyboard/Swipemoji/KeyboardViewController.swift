@@ -61,42 +61,56 @@ class KeyboardViewController: UIInputViewController {
     func strokeEnded() {
         print("Stroke End Detected")
         if let canvas = drawingCanvas {
+          
             if !canvas.isEmpty() {
-                var optionals: [String] = []
-                let pointCloud = PointCloud("input gesture", canvas.points)
-                let matchResult = _library.recognizeFromLibrary(pointCloud)
-                //                let text = "\(matchResult.name), score: \(matchResult.score)"
-                optionals = _library.recognizeoptionsFromLibrary(pointCloud)
-                
-                option0.setTitle(optionals[0], for: .normal)
-                option1.setTitle(optionals[1], for: .normal)
-                option2.setTitle(optionals[2], for: .normal)
-                option3.setTitle(optionals[3], for: .normal)
-                option4.setTitle(optionals[4], for: .normal)
-                
-                let text = "\(matchResult.name)"
-                var proxy = textDocumentProxy as UITextDocumentProxy
-                
-                if let input = text as String? {
-                    if(newCharacter){
-                        proxy.insertText(input)
-                        newCharacter = false
-//                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
-                        self.lastInput = input
-                    } else {
-                        proxy.documentInputMode.customMirror
-                        for i in 1...self.lastInput.characters.count {
-//                            proxy.adjustTextPosition(byCharacterOffset: (1))
-                            proxy.deleteBackward()
+                DispatchQueue.global(qos: .userInitiated).async { // 1
+                    //let overlayImage = self.faceOverlayImageFromImage(self.image)
+                    print("JUST ANOTHER BRICK IN THE QUEUE")
+                    var optionals: [String] = []
+                    let pointCloud = PointCloud("input gesture", canvas.points)
+                    let matchResult = self._library.recognizeFromLibrary(pointCloud)
+                    //                let text = "\(matchResult.name), score: \(matchResult.score)"
+                    optionals = self._library.recognizeoptionsFromLibrary(pointCloud)
+                    
+                    DispatchQueue.main.async { // 2
+                        
+                        self.option0.setTitle(optionals[0], for: .normal)
+                        self.option1.setTitle(optionals[1], for: .normal)
+                        self.option2.setTitle(optionals[2], for: .normal)
+                        self.option3.setTitle(optionals[3], for: .normal)
+                        self.option4.setTitle(optionals[4], for: .normal)
+
+                        
+                        // self.fadeInNewImage(overlayImage) // 3
+                    }
+                    
+                    
+                    let text = "\(matchResult.name)"
+                    let proxy = self.textDocumentProxy as UITextDocumentProxy
+                    
+                    if let input = text as String? {
+                        if(self.newCharacter){
+                            proxy.insertText(input)
+                            self.newCharacter = false
+                            //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                            self.lastInput = input
+                        } else {
+                            proxy.documentInputMode.customMirror
+                            for i in 1...self.lastInput.characters.count {
+                                //                            proxy.adjustTextPosition(byCharacterOffset: (1))
+                                proxy.deleteBackward()
+                            }
+                            proxy.insertText(input)
+                            //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                            self.lastInput = input
                         }
-                        proxy.insertText(input)
-//                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
-                        self.lastInput = input
+                        
+                        //                    drawingCanvas?.clearCanvas()
                     }
 
-//                    drawingCanvas?.clearCanvas()
+                  
                 }
-            } else {
+                            } else {
                 //                self.label!.text = "No match result."
             }
         }
