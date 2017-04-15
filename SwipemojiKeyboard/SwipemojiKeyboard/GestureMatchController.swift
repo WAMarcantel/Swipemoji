@@ -85,11 +85,6 @@ class GestureMatchController: UIViewController {
                     defaults!.set(dicArray, forKey: "gestures")
                 }
                 
-                
-                
-                
-                
-                
                 //let text = "\(matchResult.name) "
                 //var proxy = textDocumentProxy as UITextDocumentProxy
                 
