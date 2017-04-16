@@ -94,6 +94,31 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.item)!")
+        var proxy = textDocumentProxy as UITextDocumentProxy
+        var input = suggestions?[indexPath.item]
+        if let canvas = drawingCanvas {
+            if canvas.isEmpty(){
+                proxy.insertText(input!)
+            }
+            else{
+                
+                if(newCharacter){
+                    proxy.insertText(input!)
+                    newCharacter = false
+                    //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                    self.lastInput = input!
+                } else {
+                    proxy.documentInputMode.customMirror
+                    for i in 1...self.lastInput.characters.count {
+                        //                            proxy.adjustTextPosition(byCharacterOffset: (1))
+                        proxy.deleteBackward()
+                    }
+                    proxy.insertText(input!)
+                    //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
+                    self.lastInput = input!
+                }
+            }
+        }
     }
 
     func strokeEnded() {
