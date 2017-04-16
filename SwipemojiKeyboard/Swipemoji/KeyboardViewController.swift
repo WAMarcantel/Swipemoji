@@ -82,12 +82,22 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         drawingArea.backgroundColor = UIColor.white
     }
     
+    func createSuggestionGradient(){
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.suggestionView.bounds
+        gradientLayer.colors = [UIColor(red:0.95, green:0.95, blue:0.95, alpha:1).cgColor, UIColor(red:0.95, green:0.95, blue:0.95, alpha:0).cgColor]
+        gradientLayer.locations = [0.2, 1]
+        suggestionView.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     //MARK: - SuggestionView
 
     func createSuggestionView(){
+        createSuggestionGradient()
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(SuggestionCollectionViewCell.self, forCellWithReuseIdentifier: self.cellId)
+        collectionView.backgroundColor = UIColor.clear
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
