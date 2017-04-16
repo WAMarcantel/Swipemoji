@@ -27,6 +27,7 @@
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.34460216030000002" green="0.62160663059999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
         </collectionViewCell>
     </objects>
 </document>

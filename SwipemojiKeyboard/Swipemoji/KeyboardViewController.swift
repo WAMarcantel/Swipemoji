@@ -69,11 +69,10 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         collectionView.delegate = self
         collectionView.dataSource = self
     collectionView.register(SuggestionCollectionViewCell.self, forCellWithReuseIdentifier: self.cellId)
-
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return _library.pointClouds.count > 10 ? 10 : _library.pointClouds.count
     }
     
     // make a cell for each cell index path
@@ -81,7 +80,8 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         
         // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! SuggestionCollectionViewCell
-        cell.backgroundColor = UIColor.blue
+//        cell.backgroundColor = UIColor.blue
+        cell.label.text = _library.pointClouds[indexPath.item].name
         return cell
     }
     

@@ -9,10 +9,28 @@
 import UIKit
 
 class SuggestionCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var suggestionLabel : UILabel!
+    
+    var label : UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    override init(frame: CGRect){
+        super.init(frame: frame)
+
+        label = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        label.center = CGPoint(x: 25, y: 25)
+        label.textAlignment = .center
+        label.text = "👏"
+        self.addSubview(label)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     static var nibName : String {
