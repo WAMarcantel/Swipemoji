@@ -40,9 +40,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         super.viewDidLoad()
 
         NotificationCenter.default.addObserver(self, selector: "strokeEnded", name: NSNotification.Name(rawValue: "reload"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardViewController.clearUp), name: NSNotification.Name(rawValue: "clear"), object: nil)
 
-//        initializeGestureLibrary()
         loadInterface();
 
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
@@ -118,6 +116,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
                     self.lastInput = input!
                 }
             }
+            self.reset()
         }
     }
 
@@ -195,15 +194,14 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         view.backgroundColor = keyboardView.backgroundColor
     }
 
-    public func clearUp(){
-        print("HYPE!")
-        drawingCanvas?.clearCanvas()
-    }
-
-    @IBAction func clearButtonPressed(_ sender: Any) {
+    func reset(){
         drawingCanvas?.clearCanvas()
         self.populateSuggestions(pointCloud: nil)
         collectionView.reloadData()
+    }
+
+    @IBAction func clearButtonPressed(_ sender: Any) {
+        self.reset()
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -225,6 +223,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     @IBAction func backspacePressed(_ sender: Any) {
         var proxy = textDocumentProxy as UITextDocumentProxy
         proxy.deleteBackward()
+        self.reset()
     }
 
     @IBAction func option0_pressed(_ sender: Any) {
