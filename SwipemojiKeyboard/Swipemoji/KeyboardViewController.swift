@@ -108,6 +108,15 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! SuggestionCollectionViewCell
         cell.label.text = suggestions?[indexPath.item]
+        var border = CALayer()
+        border.backgroundColor = UIColor.lightGray.cgColor;
+        border.frame = CGRect(x: 0, y: 0, width: 1, height: cell.frame.height - 10)
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = border.bounds
+        gradientLayer.colors = [UIColor(red:0.5, green:0.5, blue:0.5, alpha:0.4).cgColor, UIColor(red:0.5, green:0.5, blue:0.5, alpha:0).cgColor]
+        gradientLayer.locations = [0.4, 0.9]
+        border.insertSublayer(gradientLayer, at: 0)
+        cell.layer.addSublayer(border)
         return cell
     }
 
