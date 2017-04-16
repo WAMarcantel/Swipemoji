@@ -202,6 +202,8 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
 
     @IBAction func clearButtonPressed(_ sender: Any) {
         drawingCanvas?.clearCanvas()
+        self.populateSuggestions(pointCloud: nil)
+        collectionView.reloadData()
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
