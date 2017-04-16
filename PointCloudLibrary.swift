@@ -54,6 +54,7 @@ class PointCloudLibrary {
         var answer: [String] = []
         var b = Double.infinity
         var k = Double.infinity
+        
         var u = -1
         var i = 0
         var j = 4
@@ -61,9 +62,17 @@ class PointCloudLibrary {
         var it = 0
         var now = 0
         
+        let suggestionBarMax = 10
+        var suggestionBarCount : Int
+        if(suggestionBarMax > self.pointClouds.count){
+            suggestionBarCount = self.pointClouds.count
+        } else {
+            suggestionBarCount = suggestionBarMax
+        }
+        
         for (index, pointCloud) in pointClouds.enumerated() {
             if let l = inputGesture.greedyMatch(pointCloud) {
-                if (i < 5){
+                if (i < suggestionBarCount){
                     dictionary.updateValue(index, forKey: l)
                     scores.append(l)
                     i = i + 1
@@ -75,10 +84,7 @@ class PointCloudLibrary {
         for (index, pointCloud) in pointClouds.enumerated() {
             
             if let d = inputGesture.greedyMatch(pointCloud) {
-                if (now >= 5){
-                    if (now == 5){
-                        print("YES")
-                    }
+                if (now >= suggestionBarCount){
                     while (j >= 0){
                         print("comparing \(scores[j]) to \(d)")
                         if (scores[j] > d){
@@ -90,7 +96,7 @@ class PointCloudLibrary {
                         j = j - 1
                     }
                 }
-                j = 4
+                j = suggestionBarCount - 1
                 
                 if(d < b) {
                     b = d
@@ -104,7 +110,7 @@ class PointCloudLibrary {
         
         if(u == -1){
             var er = 0
-            while (er < 5){
+            while (er < suggestionBarCount){
                 answer.append("💩")
                 er = er + 1
             }
@@ -112,7 +118,7 @@ class PointCloudLibrary {
         else {
             
             
-            while (it < 5){
+            while (it < suggestionBarCount){
                 print(dictionary[scores[it]]!)
                 answer.append(pointClouds[dictionary[scores[it]]!].name)
                 it = it + 1
