@@ -10,8 +10,6 @@ import UIKit
 
 class SuggestionCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var suggestionLabel : UILabel!
-    
     var label : UILabel!
 
     override func awakeFromNib() {
