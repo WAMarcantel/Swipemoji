@@ -61,15 +61,14 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         // Perform custom UI setup here
 
         keyboardView.backgroundColor = UIColor(red:0.82, green:0.84, blue:0.86, alpha:1.0)
-
-
+        self.populateSuggestions(pointCloud: nil)
         createSuggestionView()
     }
 
     func createSuggestionView(){
         collectionView.delegate = self
         collectionView.dataSource = self
-    collectionView.register(SuggestionCollectionViewCell.self, forCellWithReuseIdentifier: self.cellId)
+        collectionView.register(SuggestionCollectionViewCell.self, forCellWithReuseIdentifier: self.cellId)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -80,17 +79,17 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! SuggestionCollectionViewCell
         if let canvas = drawingCanvas {
-            if !canvas.isEmpty(){
-                cell.label.text = suggestions?[indexPath.item]
-            } else {
-                cell.label.text = _library.pointClouds[indexPath.item].name
-            }
+            cell.label.text = suggestions?[indexPath.item]
         }
         return cell
     }
 
-    func populateSuggestions(pointCloud : PointCloud){
-        self.suggestions = _library.recognizeoptionsFromLibrary(pointCloud)
+    func populateSuggestions(pointCloud : PointCloud?){
+        if(pointCloud == nil){
+            self.suggestions = Array(_library.pointClouds.prefix(10)).map({$0.name})
+            return
+        }
+        self.suggestions = _library.recognizeoptionsFromLibrary(pointCloud!)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
