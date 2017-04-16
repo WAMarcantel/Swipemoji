@@ -24,6 +24,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     var lastPoint = CGPoint.zero
     var drawingCanvas:PointDrawingCanvas?
     var _library = PointCloudLibrary.getDemoLibrary()
+    var suggestions : [String]?
     var newCharacter : Bool = true
     var lastInput : String = ""
     
@@ -75,20 +76,24 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         return _library.pointClouds.count > 10 ? 10 : _library.pointClouds.count
     }
     
-    // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! SuggestionCollectionViewCell
-//        cell.backgroundColor = UIColor.blue
-        cell.label.text = _library.pointClouds[indexPath.item].name
+        if let canvas = drawingCanvas {
+            if !canvas.isEmpty(){
+                cell.label.text = suggestions?[indexPath.item]
+            } else {
+                cell.label.text = _library.pointClouds[indexPath.item].name
+            }
+        }
         return cell
     }
     
-    // MARK: - UICollectionViewDelegate protocol
+    func populateSuggestions(pointCloud : PointCloud){
+        self.suggestions = _library.recognizeoptionsFromLibrary(pointCloud)
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // handle tap events
         print("You selected cell #\(indexPath.item)!")
     }
     
@@ -97,10 +102,11 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         if let canvas = drawingCanvas {
             if !canvas.isEmpty() {
                 var optionals: [String] = []
-                let pointCloud = PointCloud("input gesture", canvas.points)
-                let matchResult = _library.recognizeFromLibrary(pointCloud)
-                //                let text = "\(matchResult.name), score: \(matchResult.score)"
-                optionals = _library.recognizeoptionsFromLibrary(pointCloud)
+                let strokePointCloud = PointCloud("input gesture", canvas.points)
+                let matchResult = _library.recognizeFromLibrary(strokePointCloud)
+                optionals = _library.recognizeoptionsFromLibrary(strokePointCloud)
+                populateSuggestions(pointCloud: strokePointCloud)
+                collectionView.reloadData()
                 
                 option0.setTitle(optionals[0], for: .normal)
                 option1.setTitle(optionals[1], for: .normal)
@@ -127,8 +133,6 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
 //                        proxy.adjustTextPosition(byCharacterOffset: -(input.characters.count+1))
                         self.lastInput = input
                     }
-
-//                    drawingCanvas?.clearCanvas()
                 }
             } else {
                 //                self.label!.text = "No match result."
