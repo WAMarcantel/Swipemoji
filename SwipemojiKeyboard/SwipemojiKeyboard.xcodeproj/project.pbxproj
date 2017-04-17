@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1608981A1E8346550061AAE7 /* PointDisplayCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160898191E8346550061AAE7 /* PointDisplayCanvas.swift */; };
+		160A4A5B1EA2C47F00A44031 /* SuggestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160A4A591EA2C47F00A44031 /* SuggestionCollectionViewCell.swift */; };
+		160A4A5C1EA2C47F00A44031 /* SuggestionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 160A4A5A1EA2C47F00A44031 /* SuggestionCollectionViewCell.xib */; };
 		1699357D1E9F0DA200542B5D /* emojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1699357C1E9F0DA200542B5D /* emojiCollectionViewCell.swift */; };
 		169AFE3C1E5D4B26005FF5C3 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169AFE3B1E5D4B26005FF5C3 /* PreviewViewController.swift */; };
 		16A38C921EA018550010E658 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A38C911EA018550010E658 /* DemoViewController.swift */; };
@@ -59,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		160898191E8346550061AAE7 /* PointDisplayCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointDisplayCanvas.swift; path = SwipemojiKeyboard/PointDisplayCanvas.swift; sourceTree = "<group>"; };
+		160A4A591EA2C47F00A44031 /* SuggestionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionCollectionViewCell.swift; sourceTree = "<group>"; };
+		160A4A5A1EA2C47F00A44031 /* SuggestionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestionCollectionViewCell.xib; sourceTree = "<group>"; };
 		1699357C1E9F0DA200542B5D /* emojiCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = emojiCollectionViewCell.swift; sourceTree = "<group>"; };
 		169AFE3B1E5D4B26005FF5C3 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		16A38C911EA018550010E658 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 				16EA02B01E4B786800B23EAC /* KeyboardViewController.swift */,
 				16EA02B21E4B786800B23EAC /* Info.plist */,
 				16EA02BA1E4B79F100B23EAC /* Swipemoji.xib */,
+				160A4A591EA2C47F00A44031 /* SuggestionCollectionViewCell.swift */,
+				160A4A5A1EA2C47F00A44031 /* SuggestionCollectionViewCell.xib */,
 			);
 			path = Swipemoji;
 			sourceTree = "<group>";
@@ -221,7 +227,7 @@
 				TargetAttributes = {
 					16EA02941E4B775E00B23EAC = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5HR7QQ25H6;
+						DevelopmentTeam = 4XRLFC3F88;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -275,6 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				160A4A5C1EA2C47F00A44031 /* SuggestionCollectionViewCell.xib in Resources */,
 				16EA02BB1E4B79F100B23EAC /* Swipemoji.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,6 +316,7 @@
 				16FEFC2B1E537AB900C05418 /* PointCloudModeler.swift in Sources */,
 				16FEFC2E1E537B4800C05418 /* PointCloudLibrary.swift in Sources */,
 				16FEFC311E537B5E00C05418 /* PointDrawingCanvas.swift in Sources */,
+				160A4A5B1EA2C47F00A44031 /* SuggestionCollectionViewCell.swift in Sources */,
 				16FEFC221E537A7C00C05418 /* MatchResult.swift in Sources */,
 				16EA02B11E4B786800B23EAC /* KeyboardViewController.swift in Sources */,
 				16FEFC241E537A7C00C05418 /* Point.swift in Sources */,
@@ -445,7 +453,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SwipemojiKeyboard/SwipemojiKeyboard.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5HR7QQ25H6;
+				DEVELOPMENT_TEAM = 4XRLFC3F88;
 				INFOPLIST_FILE = SwipemojiKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -465,7 +473,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SwipemojiKeyboard/SwipemojiKeyboard.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5HR7QQ25H6;
+				DEVELOPMENT_TEAM = 4XRLFC3F88;
 				INFOPLIST_FILE = SwipemojiKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
