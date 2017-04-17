@@ -21,7 +21,7 @@ class SuggestionCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
 
         label = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        label.center = CGPoint(x: 25, y: 25)
+        label.center = CGPoint(x: 28, y: 22)
         label.textAlignment = .center
         label.text = "👏"
         self.addSubview(label)
