@@ -90,6 +90,10 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         suggestionView.layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    func submitCount(submittedString: String){
+        
+    }
+    
     //MARK: - SuggestionView
 
     func createSuggestionView(){
@@ -126,7 +130,6 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
 
     func strokeEnded() {
         if let canvas = drawingCanvas {
-
             if !canvas.isEmpty() {
                 DispatchQueue.global(qos: .userInitiated).async { // 1
                     let pointCloud = PointCloud("input gesture", canvas.points)

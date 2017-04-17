@@ -74,4 +74,8 @@ class PointCloud {
         
         return sum
     }
+    
+    func incrementCount(){
+        self.count += 1
+    }
 }

@@ -114,4 +114,33 @@ class PointCloudLibrary {
         }
         return _library
     }
+    
+    static func submitGesture(input: String, inputPoints: [Point]){
+        let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
+        if let dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
+            var dicArrayStore = dicArray
+            dicArrayStore = dicArrayStore.filter({ (dic) -> Bool in
+                dic.allKeys[0] as! String != input
+            })
+            dicArrayStore.append([input : pointsToArray(points: inputPoints)])
+            defaults!.set(dicArrayStore, forKey: "gestures")
+            
+        } else {
+            var dicArray: [NSMutableDictionary] = []
+            dicArray.append([input : pointsToArray(points: inputPoints)])
+            defaults!.set(dicArray, forKey: "gestures")
+        }
+
+    }
+    
+    static func pointsToArray(points:[Point]) -> [NSArray] {
+        var pointArray = [] as [NSArray]
+        
+        for point in points {
+            var array = [point.x, point.y, point.id] as NSArray
+            pointArray.append(array)
+        }
+        return pointArray
+    }
+
 }
