@@ -1,3 +1,4 @@
+
 //
 //  KeyboardViewController.swift
 //  Swipemoji
@@ -110,7 +111,6 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! SuggestionCollectionViewCell
         cell.label.text = suggestions?[indexPath.item]
         var border = CALayer()
@@ -122,6 +122,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let input = suggestions?[indexPath.item]
+        PointCloudLibrary.updateGestureDefault(input: input!)
         self.updateProxyText(text: input!)
         self.reset()
     }

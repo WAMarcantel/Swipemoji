@@ -99,20 +99,36 @@ class PointCloudLibrary {
     
     static func getDemoLibrary() -> PointCloudLibrary {
         let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
-        let _library = PointCloudLibrary()
+        var _library = PointCloudLibrary()
         if let gestures = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
             for gesture in gestures {
-                for (key, value) in gesture {
-                    var points = [] as [Point]
-                    for array in value as! [NSArray] {
-                        let point = Point(x:array[0] as! Double, y:array[1] as! Double, id:array[2] as! Int)
-                        points.append(point)
-                    }
-                    _library.pointClouds.append(PointCloud(key as! String, points))
-                }
+                _library = addGesture(newGesture: gesture, currentLibrary: _library)
             }
         }
+        _library.pointClouds.sort(by: {$0.count > $1.count})
         return _library
+    }
+    
+    static func addGesture(newGesture : NSMutableDictionary, currentLibrary: PointCloudLibrary) -> PointCloudLibrary{
+        var gestureCount : Int
+        if(newGesture["count"] != nil){
+            gestureCount = newGesture["count"] as! Int
+        } else {
+            gestureCount = 0
+        }
+        for (key, value) in newGesture {
+            if(key as! String == "count"){
+                gestureCount = value as! Int
+            } else {
+                var points = [] as [Point]
+                for array in value as! [NSArray] {
+                    let point = Point(x:array[0] as! Double, y:array[1] as! Double, id:array[2] as! Int)
+                    points.append(point)
+                }
+                currentLibrary.pointClouds.append(PointCloud(key as! String, points, gestureCount ))
+            }
+        }
+        return currentLibrary
     }
     
     static func submitGesture(input: String, inputPoints: [Point]){
@@ -122,15 +138,14 @@ class PointCloudLibrary {
             dicArrayStore = dicArrayStore.filter({ (dic) -> Bool in
                 dic.allKeys[0] as! String != input
             })
-            dicArrayStore.append([input : pointsToArray(points: inputPoints)])
+            dicArrayStore.append([input : pointsToArray(points: inputPoints), "count": 0])
             defaults!.set(dicArrayStore, forKey: "gestures")
             
         } else {
             var dicArray: [NSMutableDictionary] = []
-            dicArray.append([input : pointsToArray(points: inputPoints)])
+            dicArray.append([input : pointsToArray(points: inputPoints), "count": 0])
             defaults!.set(dicArray, forKey: "gestures")
         }
-
     }
     
     static func pointsToArray(points:[Point]) -> [NSArray] {
@@ -141,6 +156,24 @@ class PointCloudLibrary {
             pointArray.append(array)
         }
         return pointArray
+    }
+    
+    static func updateGestureDefault(input: String){
+        let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
+            if var dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
+                let index = dicArray.index(where: { $0[input] != nil })
+                let updatingDict = dicArray[index!]
+                var newValue = 0
+                if let count = updatingDict["count"] as? Int {
+                    print(count)
+                    newValue = count + 1
+                } else {
+                    print("No count defined")
+                }
+                dicArray.append([ input: updatingDict[input], "count": newValue])
+                dicArray.remove(at: index!)
+                defaults!.set(dicArray, forKey: "gestures")
+            }
     }
 
 }

@@ -59,35 +59,12 @@ class GestureMatchController: UIViewController {
     @IBAction func submitGesture(_ sender: Any) {
         if let canvas = drawingCanvas {
             if !canvas.isEmpty() {
-//                _library.submitGesture()
                 PointCloudLibrary.submitGesture(input: emojiText.text!, inputPoints: canvas.points)
-                
-//                let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
-//                if let dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
-//                    var dicArrayStore = dicArray
-//                    dicArrayStore = dicArrayStore.filter({ (dic) -> Bool in
-//                        dic.allKeys[0] as! String != emojiText.text!
-//                    })
-//                    dicArrayStore.append([emojiText.text!: _library.pointsToArray(points: canvas.points)])
-//                    //_library.pointClouds.append(PointCloud(emojiText.text!, canvas.points))
-//                    defaults!.set(dicArrayStore, forKey: "gestures")
-//                    
-//                } else {
-//                    var dicArray: [NSMutableDictionary] = []
-//                    
-//                    dicArray.append([emojiText.text!: _lipointsToArray(points: canvas.points)])
-//                    //_library.pointClouds.append(PointCloud(emojiText.text!, canvas.points))
-//                    
-//                    defaults!.set(dicArray, forKey: "gestures")
-//                }
-                
             } else {
                 //self.emojiText.text = "No match result."
             }
         }
         self.dismiss(animated: true)
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
