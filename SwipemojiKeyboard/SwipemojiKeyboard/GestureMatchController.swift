@@ -59,63 +59,12 @@ class GestureMatchController: UIViewController {
     @IBAction func submitGesture(_ sender: Any) {
         if let canvas = drawingCanvas {
             if !canvas.isEmpty() {
-                //let pointCloud = PointCloud("input gesture", canvas.points)
-                
-                //let matchResult = _library.recognizeFromLibrary(pointCloud)
-                //                let text = "\(matchResult.name), score: \(matchResult.score)"
-                
-                //print(canvas.points) //array of Point objects
-                
-                let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
-                if let dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
-                    var dicArrayStore = dicArray
-                    dicArrayStore = dicArrayStore.filter({ (dic) -> Bool in
-                        dic.allKeys[0] as! String != emojiText.text!
-                    })
-                    dicArrayStore.append([emojiText.text!:pointsToArray(points: canvas.points)])
-                    //_library.pointClouds.append(PointCloud(emojiText.text!, canvas.points))
-                    defaults!.set(dicArrayStore, forKey: "gestures")
-                    
-                } else {
-                    var dicArray: [NSMutableDictionary] = []
-                    
-                    dicArray.append([emojiText.text!:pointsToArray(points: canvas.points)])
-                    //_library.pointClouds.append(PointCloud(emojiText.text!, canvas.points))
-                    
-                    defaults!.set(dicArray, forKey: "gestures")
-                }
-                
-                //let text = "\(matchResult.name) "
-                //var proxy = textDocumentProxy as UITextDocumentProxy
-                
-                /*if let input = text as String? {
-                    proxy.insertText(input)
-                    drawingCanvas?.clearCanvas()
-                }*/
+                PointCloudLibrary.submitGesture(input: emojiText.text!, inputPoints: canvas.points)
             } else {
                 //self.emojiText.text = "No match result."
             }
         }
         self.dismiss(animated: true)
-        
-        
-    }
-    func pointsToArray(points:[Point]) -> [NSArray] {
-        var pointArray = [] as [NSArray]
-        
-        for point in points {
-            var array = [point.x, point.y, point.id] as NSArray
-            pointArray.append(array)
-            
-            
-            
-            
-            
-            
-        }
-        //print(pointArray)
-        return pointArray
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -133,5 +82,7 @@ class GestureMatchController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }

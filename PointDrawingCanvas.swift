@@ -35,7 +35,6 @@ class PointDrawingCanvas : UIView {
         }
     }
     
-    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let point = touch.location(in: self)

@@ -1,3 +1,4 @@
+
 //
 //  KeyboardViewController.swift
 //  Swipemoji
@@ -90,6 +91,10 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         suggestionView.layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    func submitCount(submittedString: String){
+        
+    }
+    
     //MARK: - SuggestionView
 
     func createSuggestionView(){
@@ -106,7 +111,6 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! SuggestionCollectionViewCell
         cell.label.text = suggestions?[indexPath.item]
         var border = CALayer()
@@ -118,6 +122,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let input = suggestions?[indexPath.item]
+        PointCloudLibrary.updateGestureDefault(input: input!)
         self.updateProxyText(text: input!)
         self.reset()
     }
@@ -126,7 +131,6 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
 
     func strokeEnded() {
         if let canvas = drawingCanvas {
-
             if !canvas.isEmpty() {
                 DispatchQueue.global(qos: .userInitiated).async { // 1
                     let pointCloud = PointCloud("input gesture", canvas.points)
@@ -167,6 +171,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     @IBAction func submitPressed(_ sender: Any) {
         if let canvas = drawingCanvas {
             if !canvas.isEmpty() {
+                PointCloudLibrary.updateGestureDefault(input: (suggestions?[0])!)
                 drawingCanvas?.clearCanvas()
                 newCharacter = true
             } else {
