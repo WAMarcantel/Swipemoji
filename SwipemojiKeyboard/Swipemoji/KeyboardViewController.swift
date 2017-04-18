@@ -171,6 +171,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     @IBAction func submitPressed(_ sender: Any) {
         if let canvas = drawingCanvas {
             if !canvas.isEmpty() {
+                PointCloudLibrary.updateGestureDefault(input: (suggestions?[0])!)
                 drawingCanvas?.clearCanvas()
                 newCharacter = true
             } else {
