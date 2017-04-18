@@ -168,7 +168,7 @@ class PointCloudLibrary {
                     print(count)
                     newValue = count + 1
                 } else {
-                    print("No count defined")
+                    print("No count defined") //keeps from errors occurring to old model
                 }
                 dicArray.append([ input: updatingDict[input], "count": newValue])
                 dicArray.remove(at: index!)
