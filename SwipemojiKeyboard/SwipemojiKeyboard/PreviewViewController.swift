@@ -14,31 +14,40 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
     var _library = PointCloudLibrary.getDemoLibrary()
     var isEmojiCollection = true
     var popUpIndex : Int?
+    var pinkColor = UIColor(red:1.00, green:0.29, blue:0.42, alpha:1.0)
     
     
     @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var popBlackBack: UIView!
     @IBOutlet weak var popGestureView: UIView!
     @IBOutlet weak var popEmojiLabel: UILabel!
-    @IBOutlet weak var popEmojiView: UIView!
     @IBOutlet weak var popCountLabel: UILabel!
     
+    @IBOutlet weak var popEditButton: UIView!
     @IBOutlet weak var viewOptionSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var addButton: UIButton!
+    
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var bottomView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.popBlackBack.alpha = 0
         self.popUpView.center.y = 1000
+
+        self.popUpView.layer.cornerRadius = 8
+        self.popUpView.dropShadow(color: UIColor.black, offSet: 4)
+        self.popEditButton.layer.cornerRadius = 20
+        self.popEditButton.dropShadow(color: UIColor(red:0.41, green:0.69, blue:1.00, alpha:1.0), offSet: 2)
         
-        self.popEmojiView.layer.cornerRadius = 62.5
-        self.popEmojiView.layer.borderColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0).cgColor
-         self.popEmojiView.layer.borderWidth = 2
-        self.popUpView.layer.cornerRadius = 25
-        
+        self.addButton.layer.cornerRadius = 30
+        self.addButton.dropShadow(color: UIColor(red:0.41, green:0.69, blue:1.00, alpha:1.0), offSet: 4)
+        self.bottomView.layer.cornerRadius = 8
+        self.bottomView.dropShadow(color: UIColor.black, offSet: -4)
+        self.topView.layer.backgroundColor = UIColor(red:1.00, green:0.29, blue:0.42, alpha:1.0).cgColor
+        self.topView.dropShadow(color: UIColor(red:1.00, green:0.29, blue:0.42, alpha:1.0), offSet: 4)
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         self.popBlackBack.alpha = 0
@@ -80,7 +89,8 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
             cell.emojiLabel.isHidden = true
         }
         
-        cell.layer.cornerRadius = 6
+        cell.layer.cornerRadius = 8
+        cell.dropShadow(color: UIColor.black, offSet: 2)
         return cell
     }
     
@@ -150,6 +160,45 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
             vc.initialText = self.popEmojiLabel.text
         }
     }
-    
+}
 
+extension UIView {
+    
+    // OUTPUT 1
+    func dropShadow(scale: Bool = true) {
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize(width: -1, height: 1)
+        self.layer.shadowRadius = 1
+        
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shouldRasterize = true
+        self.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+    }
+    
+    func dropShadow(color: UIColor, offSet: Int){
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOpacity = 0.25
+        self.layer.shadowOffset = CGSize(width: 0, height: offSet)
+        self.layer.shadowRadius = 4
+        
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shouldRasterize = true
+        self.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    // OUTPUT 2
+    func dropShadow(color: UIColor, opacity: Float = 0.5, offSet: CGSize, radius: CGFloat = 1, scale: Bool = true) {
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowOffset = offSet
+        self.layer.shadowRadius = radius
+        
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shouldRasterize = true
+        self.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+    }
 }
