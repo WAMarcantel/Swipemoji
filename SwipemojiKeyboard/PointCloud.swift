@@ -2,13 +2,25 @@ import UIKit
 
 class PointCloud {
     var name:String = ""
-    var count:Int = 0
+    var count:Int
     var _points:[Point] = [Point]()
     
     init(_ name:String, _ points:[Point]) {
         let modeler = PointCloudModeler()
         self.name = name
+        self.count = 0
         
+        _points = points
+        _points = modeler.resample(_points)
+        _points = modeler.translateTo(_points, pt:Point(x:0.0, y:0.0, id:0))
+        _points = modeler.scale(_points)
+    }
+    
+    init(_ name:String, _ points:[Point], _ count:Int) {
+        let modeler = PointCloudModeler()
+        self.name = name
+        self.count = count
+
         _points = points
         _points = modeler.resample(_points)
         _points = modeler.translateTo(_points, pt:Point(x:0.0, y:0.0, id:0))
@@ -73,5 +85,9 @@ class PointCloud {
         } while(i != start)
         
         return sum
+    }
+    
+    func incrementCount(){
+        self.count += 1
     }
 }

@@ -18,9 +18,6 @@ class PointDrawingCanvas : UIView {
         super.init(frame: frame)
         tempImageView = UIImageView(frame:frame)
         
-        // or bit operator in
-        // swift 1.2 : .FlexibleWidth | .FlexibleHeight -- Object Name is inferred
-        // swift 2 : [.FlexibleWidth, .FlexibleHeight]
         tempImageView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tempImageView!.backgroundColor = UIColor(red:0.95, green:0.95, blue:0.95, alpha:1)
         self.addSubview(tempImageView!)
@@ -37,7 +34,6 @@ class PointDrawingCanvas : UIView {
             points.append(point)
         }
     }
-    
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
@@ -61,13 +57,9 @@ class PointDrawingCanvas : UIView {
     
     // Quartz 2D
     func drawLine(_ from:CGPoint, to:CGPoint) {
-        // Creates a bitmap-based graphics context and makes it the current context.
-//        print(from)
-//        print(to)
         UIGraphicsBeginImageContext(self.frame.size)
         let context = UIGraphicsGetCurrentContext()
         tempImageView!.image?.draw(in: CGRect(x:0, y:0, width:self.frame.size.width, height:self.frame.size.height))
-        
         context?.move(to: CGPoint(x: from.x, y: from.y))
         context?.addLine(to: CGPoint(x: to.x, y: to.y))
         context?.setLineCap(.round)
