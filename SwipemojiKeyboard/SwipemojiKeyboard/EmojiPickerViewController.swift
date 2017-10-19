@@ -12,12 +12,18 @@ class EmojiPickerViewController: UIViewController, EmojiPickerDelegate {
     
     @IBOutlet weak var closeButton: UIButton!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any addivarnal setup after loading the view.
         closeButton.layer.cornerRadius = 21
-        closeButton.dropShadow(color: UIColor(red:0.41, green:0.69, blue:1.00, alpha:1.0), offSet: 4)
+        closeButton.dropShadow(color: UIColor(red:1.00, green:0.29, blue:0.42, alpha:1.0), offSet: 4)
         let emojiView = EmojiPickerView()
         emojiView.delegate = self
         self.view.addSubview(emojiView)
@@ -34,10 +40,13 @@ class EmojiPickerViewController: UIViewController, EmojiPickerDelegate {
         let vc = storyBoard.instantiateViewController(withIdentifier: "GestureMatch") as! GestureMatchController
         vc.selectedEmoji = emoji
         vc.initialText = emoji
-        self.present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
         
     }
 
+    @IBAction func closePressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

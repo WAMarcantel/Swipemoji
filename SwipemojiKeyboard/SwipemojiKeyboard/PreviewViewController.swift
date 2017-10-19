@@ -47,6 +47,8 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
         self.bottomView.dropShadow(color: UIColor.black, offSet: -4)
         self.topView.layer.backgroundColor = UIColor(red:1.00, green:0.29, blue:0.42, alpha:1.0).cgColor
         self.topView.dropShadow(color: UIColor(red:1.00, green:0.29, blue:0.42, alpha:1.0), offSet: 4)
+        
+        self.collectionView.alwaysBounceVertical = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -184,7 +186,19 @@ extension UIView {
         self.layer.shadowOffset = CGSize(width: 0, height: offSet)
         self.layer.shadowRadius = 4
         
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: self.layer.cornerRadius, height: self.layer.cornerRadius)).cgPath
+        self.layer.shouldRasterize = true
+        self.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    func dropShadow(color: UIColor, offSet: Int, cornerRadius: Int){
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOpacity = 0.25
+        self.layer.shadowOffset = CGSize(width: 0, height: offSet)
+        self.layer.shadowRadius = 4
+        
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).cgPath
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
     }
@@ -197,7 +211,7 @@ extension UIView {
         self.layer.shadowOffset = offSet
         self.layer.shadowRadius = radius
         
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 50, height: 50)).cgPath
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
