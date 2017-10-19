@@ -296,7 +296,7 @@
         <!--Gesture Match Controller-->
         <scene sceneID="1jB-IQ-iNJ">
             <objects>
-                <viewController id="NhA-0O-R44" customClass="GestureMatchController" customModule="SwipemojiKeyboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GestureMatch" id="NhA-0O-R44" customClass="GestureMatchController" customModule="SwipemojiKeyboard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="io0-k8-PPs"/>
                         <viewControllerLayoutGuide type="bottom" id="3mJ-GS-8gc"/>
@@ -363,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kaO-Jo-cJh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1228" y="233"/>
+            <point key="canvasLocation" x="1364" y="524"/>
         </scene>
         <!--Emoji Picker View Controller-->
         <scene sceneID="Owd-7h-1uH">
@@ -378,7 +378,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Aj-S4-HPf">
-                                <rect key="frame" x="16" y="35" width="63" height="63"/>
+                                <rect key="frame" x="15" y="42" width="42" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.27910992503166199" blue="0.40911883115768433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="39"/>
@@ -393,10 +393,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.39811766147613525" green="0.68757778406143188" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="closeButton" destination="7Aj-S4-HPf" id="NgL-Rj-OHH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lxt-Bg-CLT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="151" y="940"/>
+            <point key="canvasLocation" x="116" y="1026"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

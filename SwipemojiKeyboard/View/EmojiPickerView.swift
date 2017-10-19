@@ -8,7 +8,21 @@
 
 import UIKit
 
-class EmojiPickerView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
+public protocol EmojiPickerDelegate: class {
+    
+    /// did press a emoji button
+    ///
+    /// - Parameters:
+    ///   - emojiView: the emoji view
+    ///   - emoji: a emoji
+    func emojiViewDidSelectEmoji(emojiView: EmojiPickerView, emoji: String)
+
+    
+}
+
+public class EmojiPickerView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    public weak var delegate: EmojiPickerDelegate?
 
     public var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -28,7 +42,7 @@ class EmojiPickerView: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         setupUI()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -61,6 +75,10 @@ class EmojiPickerView: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "emojiPickerCell", for: indexPath) as! EmojiPickerCollectionViewCell
         cell.setEmoji(emoji: emojis[indexPath.section][indexPath.row])
         return cell
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.delegate?.emojiViewDidSelectEmoji(emojiView: self, emoji: emojis[indexPath.section][indexPath.row])
     }
     
     

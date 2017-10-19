@@ -16,6 +16,7 @@ class GestureMatchController: UIViewController {
     
     @IBOutlet weak var canvas: UIView!
     
+    var selectedEmoji: String?
     
     var lastPoint = CGPoint.zero
     

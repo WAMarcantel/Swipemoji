@@ -8,24 +8,34 @@
 
 import UIKit
 
-class EmojiPickerViewController: UIViewController {
+class EmojiPickerViewController: UIViewController, EmojiPickerDelegate {
     
-    var emojiList: [[String]] = []
-    let sectionTitle: [String] = ["Emoticons", "Dingbats", "Transport and map symbols", "Enclosed Characters"]
-
-
+    @IBOutlet weak var closeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // Do any addivarnal setup after loading the view.
+        closeButton.layer.cornerRadius = 21
+        closeButton.dropShadow(color: UIColor(red:0.41, green:0.69, blue:1.00, alpha:1.0), offSet: 4)
         let emojiView = EmojiPickerView()
+        emojiView.delegate = self
         self.view.addSubview(emojiView)
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func emojiViewDidSelectEmoji(emojiView: EmojiPickerView, emoji: String) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "GestureMatch") as! GestureMatchController
+        vc.selectedEmoji = emoji
+        vc.initialText = emoji
+        self.present(vc, animated: true, completion: nil)
+        
     }
 
     /*
