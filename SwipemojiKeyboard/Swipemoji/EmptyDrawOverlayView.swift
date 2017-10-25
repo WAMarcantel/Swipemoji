@@ -54,4 +54,8 @@ class EmptyDrawOverlayView: UIView {
     func show(){
         self.toggleOpacity(opacity: 1)
     }
+    
+    func changeOverlayText(){
+        
+    }
 }
