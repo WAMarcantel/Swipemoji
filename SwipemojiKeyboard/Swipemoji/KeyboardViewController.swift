@@ -81,6 +81,14 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         drawingCanvas?.backgroundColor = UIColor.white
         drawingArea!.addSubview(drawingCanvas!)
         drawingArea.backgroundColor = UIColor.white
+//        
+//        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.drawBegan(_:)))
+//        self.drawingArea.addGestureRecognizer(gesture)
+//        
+    }
+    
+    func drawBegan(_ sender: UITapGestureRecognizer){
+        
     }
     
     func createSuggestionGradient(){
@@ -114,7 +122,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! SuggestionCollectionViewCell
         cell.label.text = suggestions?[indexPath.item]
         var border = CALayer()
-        border.backgroundColor = UIColor.lightGray.cgColor;
+        border.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0).cgColor;
         border.frame = CGRect(x: 0, y: 0, width: 1, height: cell.frame.height - 10)
         cell.layer.addSublayer(border)
         return cell

@@ -13,22 +13,29 @@ class PointDrawingCanvas : UIView {
     var id = 0
     var lastPoint = CGPoint.zero
     var tempImageView:UIImageView?
+    var emptyOverlayView: EmptyDrawOverlayView?
     
     override init(frame:CGRect) {
         super.init(frame: frame)
         tempImageView = UIImageView(frame:frame)
-        
         tempImageView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tempImageView!.backgroundColor = UIColor(red:0.95, green:0.95, blue:0.95, alpha:1)
         self.addSubview(tempImageView!)
+        createEmptyStateOverlay()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func createEmptyStateOverlay(){
+        emptyOverlayView = EmptyDrawOverlayView(frame: self.frame)
+        self.addSubview(emptyOverlayView!)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
+            emptyOverlayView?.hide()
             lastPoint = touch.location(in: self)
             let point = Point(x: Double(lastPoint.x), y: Double(lastPoint.y), id: self.id)
             points.append(point)
@@ -47,6 +54,9 @@ class PointDrawingCanvas : UIView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if(points == nil){
+            emptyOverlayView?.show()
+        }
         self.id += 1
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
@@ -63,7 +73,8 @@ class PointDrawingCanvas : UIView {
         context?.move(to: CGPoint(x: from.x, y: from.y))
         context?.addLine(to: CGPoint(x: to.x, y: to.y))
         context?.setLineCap(.round)
-        context?.setLineWidth(CGFloat(3.0))
+        context?.setLineJoin(.round)
+        context?.setLineWidth(CGFloat(8.0))
         context?.setStrokeColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0)
         context?.setBlendMode(.normal)
         
@@ -74,6 +85,7 @@ class PointDrawingCanvas : UIView {
     }
     
     func clearCanvas() {
+        emptyOverlayView?.show()
         self.points = [Point]()
         self.lastPoint = CGPoint.zero
         self.id = 0
