@@ -14,8 +14,13 @@
 		1608981A1E8346550061AAE7 /* PointDisplayCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160898191E8346550061AAE7 /* PointDisplayCanvas.swift */; };
 		160A4A5B1EA2C47F00A44031 /* SuggestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160A4A591EA2C47F00A44031 /* SuggestionCollectionViewCell.swift */; };
 		160A4A5C1EA2C47F00A44031 /* SuggestionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 160A4A5A1EA2C47F00A44031 /* SuggestionCollectionViewCell.xib */; };
+		161E01051FA02F95008D1142 /* EmptyDrawingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161E01041FA02F95008D1142 /* EmptyDrawingOverlayView.swift */; };
+		16954E751F9FDF46000FF5D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16EA029F1E4B775F00B23EAC /* Assets.xcassets */; };
 		1699357D1E9F0DA200542B5D /* emojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1699357C1E9F0DA200542B5D /* emojiCollectionViewCell.swift */; };
 		169AFE3C1E5D4B26005FF5C3 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169AFE3B1E5D4B26005FF5C3 /* PreviewViewController.swift */; };
+		169DB02A1FA0DEC600DA2354 /* EmptyDrawOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169DB0291FA0DEC600DA2354 /* EmptyDrawOverlayView.swift */; };
+		169DB02B1FA0DFE900DA2354 /* PointDrawingCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */; };
+		169DB02C1FA0DFF100DA2354 /* EmptyDrawOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169DB0291FA0DEC600DA2354 /* EmptyDrawOverlayView.swift */; };
 		16A38C921EA018550010E658 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A38C911EA018550010E658 /* DemoViewController.swift */; };
 		16EA02991E4B775E00B23EAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA02981E4B775E00B23EAC /* AppDelegate.swift */; };
 		16EA029E1E4B775F00B23EAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16EA029C1E4B775F00B23EAC /* Main.storyboard */; };
@@ -34,7 +39,6 @@
 		16FEFC2B1E537AB900C05418 /* PointCloudModeler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC291E537AB900C05418 /* PointCloudModeler.swift */; };
 		16FEFC2D1E537B4800C05418 /* PointCloudLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */; };
 		16FEFC2E1E537B4800C05418 /* PointCloudLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */; };
-		16FEFC301E537B5E00C05418 /* PointDrawingCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */; };
 		16FEFC311E537B5E00C05418 /* PointDrawingCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */; };
 		1FC858C61E57730000C9141B /* GestureMatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC858C51E57730000C9141B /* GestureMatchController.swift */; };
 /* End PBXBuildFile section */
@@ -71,8 +75,10 @@
 		160898191E8346550061AAE7 /* PointDisplayCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointDisplayCanvas.swift; path = SwipemojiKeyboard/PointDisplayCanvas.swift; sourceTree = "<group>"; };
 		160A4A591EA2C47F00A44031 /* SuggestionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionCollectionViewCell.swift; sourceTree = "<group>"; };
 		160A4A5A1EA2C47F00A44031 /* SuggestionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestionCollectionViewCell.xib; sourceTree = "<group>"; };
+		161E01041FA02F95008D1142 /* EmptyDrawingOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyDrawingOverlayView.swift; path = SwipemojiKeyboard/EmptyDrawingOverlayView.swift; sourceTree = SOURCE_ROOT; };
 		1699357C1E9F0DA200542B5D /* emojiCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = emojiCollectionViewCell.swift; sourceTree = "<group>"; };
 		169AFE3B1E5D4B26005FF5C3 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		169DB0291FA0DEC600DA2354 /* EmptyDrawOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyDrawOverlayView.swift; sourceTree = "<group>"; };
 		16A38C911EA018550010E658 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		16EA02951E4B775E00B23EAC /* SwipemojiKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipemojiKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16EA02981E4B775E00B23EAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +124,7 @@
 			children = (
 				16068D0D1F98F7B200F2FAF3 /* EmojiPickerView.swift */,
 				16068D0F1F991E3F00F2FAF3 /* EmojiPickerCollectionViewCell.swift */,
+				161E01041FA02F95008D1142 /* EmptyDrawingOverlayView.swift */,
 			);
 			name = view;
 			path = SwipemojiKeyboard;
@@ -183,6 +190,7 @@
 				16EA02BA1E4B79F100B23EAC /* Swipemoji.xib */,
 				160A4A591EA2C47F00A44031 /* SuggestionCollectionViewCell.swift */,
 				160A4A5A1EA2C47F00A44031 /* SuggestionCollectionViewCell.xib */,
+				169DB0291FA0DEC600DA2354 /* EmptyDrawOverlayView.swift */,
 			);
 			path = Swipemoji;
 			sourceTree = "<group>";
@@ -312,6 +320,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16954E751F9FDF46000FF5D8 /* Assets.xcassets in Resources */,
 				160A4A5C1EA2C47F00A44031 /* SuggestionCollectionViewCell.xib in Resources */,
 				16EA02BB1E4B79F100B23EAC /* Swipemoji.xib in Resources */,
 			);
@@ -324,20 +333,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				169DB02C1FA0DFF100DA2354 /* EmptyDrawOverlayView.swift in Sources */,
 				16FEFC251E537A7C00C05418 /* PointCloud.swift in Sources */,
 				16FEFC2D1E537B4800C05418 /* PointCloudLibrary.swift in Sources */,
 				16FEFC2A1E537AB900C05418 /* PointCloudModeler.swift in Sources */,
 				16A38C921EA018550010E658 /* DemoViewController.swift in Sources */,
 				1699357D1E9F0DA200542B5D /* emojiCollectionViewCell.swift in Sources */,
+				169DB02B1FA0DFE900DA2354 /* PointDrawingCanvas.swift in Sources */,
 				1608981A1E8346550061AAE7 /* PointDisplayCanvas.swift in Sources */,
 				169AFE3C1E5D4B26005FF5C3 /* PreviewViewController.swift in Sources */,
 				16068D0E1F98F7B200F2FAF3 /* EmojiPickerView.swift in Sources */,
 				16068D101F991E3F00F2FAF3 /* EmojiPickerCollectionViewCell.swift in Sources */,
 				16FEFC231E537A7C00C05418 /* Point.swift in Sources */,
-				16FEFC301E537B5E00C05418 /* PointDrawingCanvas.swift in Sources */,
 				16FEFC211E537A7C00C05418 /* MatchResult.swift in Sources */,
 				16068D091F97E21F00F2FAF3 /* EmojiPickerViewController.swift in Sources */,
 				16EA02991E4B775E00B23EAC /* AppDelegate.swift in Sources */,
+				161E01051FA02F95008D1142 /* EmptyDrawingOverlayView.swift in Sources */,
 				1FC858C61E57730000C9141B /* GestureMatchController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				169DB02A1FA0DEC600DA2354 /* EmptyDrawOverlayView.swift in Sources */,
 				16FEFC261E537A7C00C05418 /* PointCloud.swift in Sources */,
 				16FEFC2B1E537AB900C05418 /* PointCloudModeler.swift in Sources */,
 				16FEFC2E1E537B4800C05418 /* PointCloudLibrary.swift in Sources */,
