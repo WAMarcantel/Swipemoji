@@ -15,6 +15,8 @@
 		160A4A5B1EA2C47F00A44031 /* SuggestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160A4A591EA2C47F00A44031 /* SuggestionCollectionViewCell.swift */; };
 		160A4A5C1EA2C47F00A44031 /* SuggestionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 160A4A5A1EA2C47F00A44031 /* SuggestionCollectionViewCell.xib */; };
 		161E01051FA02F95008D1142 /* EmptyDrawingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161E01041FA02F95008D1142 /* EmptyDrawingOverlayView.swift */; };
+		1633560D1FA141BF00C36536 /* LogoBWAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 1633560C1FA141BF00C36536 /* LogoBWAnimation.json */; };
+		1633560E1FA141BF00C36536 /* LogoBWAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 1633560C1FA141BF00C36536 /* LogoBWAnimation.json */; };
 		16954E751F9FDF46000FF5D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16EA029F1E4B775F00B23EAC /* Assets.xcassets */; };
 		1699357D1E9F0DA200542B5D /* emojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1699357C1E9F0DA200542B5D /* emojiCollectionViewCell.swift */; };
 		169AFE3C1E5D4B26005FF5C3 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169AFE3B1E5D4B26005FF5C3 /* PreviewViewController.swift */; };
@@ -41,6 +43,8 @@
 		16FEFC2E1E537B4800C05418 /* PointCloudLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC2C1E537B4800C05418 /* PointCloudLibrary.swift */; };
 		16FEFC311E537B5E00C05418 /* PointDrawingCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FEFC2F1E537B5E00C05418 /* PointDrawingCanvas.swift */; };
 		1FC858C61E57730000C9141B /* GestureMatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC858C51E57730000C9141B /* GestureMatchController.swift */; };
+		8A47E54E77852FBBBC577BDC /* Pods_SwipemojiKeyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01ED658AC0E7137136346771 /* Pods_SwipemojiKeyboard.framework */; };
+		D4359A2A5F4571B4C5133781 /* Pods_Swipemoji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC64A6EF51C2FBC3D93333E /* Pods_Swipemoji.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +72,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		01ED658AC0E7137136346771 /* Pods_SwipemojiKeyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwipemojiKeyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16068D081F97E21F00F2FAF3 /* EmojiPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiPickerViewController.swift; sourceTree = "<group>"; };
 		16068D0A1F98E7F200F2FAF3 /* EmojiList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EmojiList.plist; sourceTree = "<group>"; };
 		16068D0D1F98F7B200F2FAF3 /* EmojiPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmojiPickerView.swift; path = View/EmojiPickerView.swift; sourceTree = SOURCE_ROOT; };
@@ -76,6 +81,7 @@
 		160A4A591EA2C47F00A44031 /* SuggestionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionCollectionViewCell.swift; sourceTree = "<group>"; };
 		160A4A5A1EA2C47F00A44031 /* SuggestionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestionCollectionViewCell.xib; sourceTree = "<group>"; };
 		161E01041FA02F95008D1142 /* EmptyDrawingOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyDrawingOverlayView.swift; path = SwipemojiKeyboard/EmptyDrawingOverlayView.swift; sourceTree = SOURCE_ROOT; };
+		1633560C1FA141BF00C36536 /* LogoBWAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LogoBWAnimation.json; sourceTree = "<group>"; };
 		1699357C1E9F0DA200542B5D /* emojiCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = emojiCollectionViewCell.swift; sourceTree = "<group>"; };
 		169AFE3B1E5D4B26005FF5C3 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		169DB0291FA0DEC600DA2354 /* EmptyDrawOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyDrawOverlayView.swift; sourceTree = "<group>"; };
@@ -99,6 +105,11 @@
 		1FC858C51E57730000C9141B /* GestureMatchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureMatchController.swift; sourceTree = "<group>"; };
 		1FC858C71E5CFDEB00C9141B /* SwipemojiKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwipemojiKeyboard.entitlements; sourceTree = "<group>"; };
 		1FC858C81E5CFF3900C9141B /* Swipemoji.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Swipemoji.entitlements; sourceTree = "<group>"; };
+		3AC64A6EF51C2FBC3D93333E /* Pods_Swipemoji.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swipemoji.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89FACA755EC19B16A97C3BC1 /* Pods-SwipemojiKeyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipemojiKeyboard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwipemojiKeyboard/Pods-SwipemojiKeyboard.debug.xcconfig"; sourceTree = "<group>"; };
+		9030D1602401BD37F6E6C6EB /* Pods-SwipemojiKeyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwipemojiKeyboard.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwipemojiKeyboard/Pods-SwipemojiKeyboard.release.xcconfig"; sourceTree = "<group>"; };
+		C0B7D1E3A34F9DB268FCEB20 /* Pods-Swipemoji.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipemoji.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swipemoji/Pods-Swipemoji.debug.xcconfig"; sourceTree = "<group>"; };
+		DFB73B699FBA5DAACF2803FD /* Pods-Swipemoji.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipemoji.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swipemoji/Pods-Swipemoji.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A47E54E77852FBBBC577BDC /* Pods_SwipemojiKeyboard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4359A2A5F4571B4C5133781 /* Pods_Swipemoji.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +165,8 @@
 				16EA02AF1E4B786800B23EAC /* Swipemoji */,
 				16EA02961E4B775E00B23EAC /* Products */,
 				16068D0A1F98E7F200F2FAF3 /* EmojiList.plist */,
+				64E29CB38E7C74FDE8BA03E7 /* Pods */,
+				46CDAFF0F9DED2A172FCE69C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -191,6 +206,7 @@
 				160A4A591EA2C47F00A44031 /* SuggestionCollectionViewCell.swift */,
 				160A4A5A1EA2C47F00A44031 /* SuggestionCollectionViewCell.xib */,
 				169DB0291FA0DEC600DA2354 /* EmptyDrawOverlayView.swift */,
+				1633560C1FA141BF00C36536 /* LogoBWAnimation.json */,
 			);
 			path = Swipemoji;
 			sourceTree = "<group>";
@@ -214,6 +230,26 @@
 			name = util;
 			sourceTree = "<group>";
 		};
+		46CDAFF0F9DED2A172FCE69C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3AC64A6EF51C2FBC3D93333E /* Pods_Swipemoji.framework */,
+				01ED658AC0E7137136346771 /* Pods_SwipemojiKeyboard.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64E29CB38E7C74FDE8BA03E7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0B7D1E3A34F9DB268FCEB20 /* Pods-Swipemoji.debug.xcconfig */,
+				DFB73B699FBA5DAACF2803FD /* Pods-Swipemoji.release.xcconfig */,
+				89FACA755EC19B16A97C3BC1 /* Pods-SwipemojiKeyboard.debug.xcconfig */,
+				9030D1602401BD37F6E6C6EB /* Pods-SwipemojiKeyboard.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -221,10 +257,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16EA02A71E4B775F00B23EAC /* Build configuration list for PBXNativeTarget "SwipemojiKeyboard" */;
 			buildPhases = (
+				58064D4DD6BE7AB36AC265DD /* [CP] Check Pods Manifest.lock */,
 				16EA02911E4B775E00B23EAC /* Sources */,
 				16EA02921E4B775E00B23EAC /* Frameworks */,
 				16EA02931E4B775E00B23EAC /* Resources */,
 				16EA02B91E4B786800B23EAC /* Embed App Extensions */,
+				55F8D64DED262EEB8DF36FD8 /* [CP] Embed Pods Frameworks */,
+				70BFD30FDA2BFD668EC88AA8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -240,9 +279,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16EA02B61E4B786800B23EAC /* Build configuration list for PBXNativeTarget "Swipemoji" */;
 			buildPhases = (
+				2A0C70721637D70B67240701 /* [CP] Check Pods Manifest.lock */,
 				16EA02AA1E4B786800B23EAC /* Sources */,
 				16EA02AB1E4B786800B23EAC /* Frameworks */,
 				16EA02AC1E4B786800B23EAC /* Resources */,
+				1BCC44D5FA63D954979C406F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -309,6 +350,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1633560D1FA141BF00C36536 /* LogoBWAnimation.json in Resources */,
 				16EA02A31E4B775F00B23EAC /* LaunchScreen.storyboard in Resources */,
 				16068D0B1F98E7F200F2FAF3 /* EmojiList.plist in Resources */,
 				16EA02A01E4B775F00B23EAC /* Assets.xcassets in Resources */,
@@ -323,10 +365,89 @@
 				16954E751F9FDF46000FF5D8 /* Assets.xcassets in Resources */,
 				160A4A5C1EA2C47F00A44031 /* SuggestionCollectionViewCell.xib in Resources */,
 				16EA02BB1E4B79F100B23EAC /* Swipemoji.xib in Resources */,
+				1633560E1FA141BF00C36536 /* LogoBWAnimation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1BCC44D5FA63D954979C406F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swipemoji/Pods-Swipemoji-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2A0C70721637D70B67240701 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		55F8D64DED262EEB8DF36FD8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwipemojiKeyboard/Pods-SwipemojiKeyboard-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		58064D4DD6BE7AB36AC265DD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		70BFD30FDA2BFD668EC88AA8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwipemojiKeyboard/Pods-SwipemojiKeyboard-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		16EA02911E4B775E00B23EAC /* Sources */ = {
@@ -494,6 +615,7 @@
 		};
 		16EA02A81E4B775F00B23EAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89FACA755EC19B16A97C3BC1 /* Pods-SwipemojiKeyboard.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -514,6 +636,7 @@
 		};
 		16EA02A91E4B775F00B23EAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9030D1602401BD37F6E6C6EB /* Pods-SwipemojiKeyboard.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -532,6 +655,7 @@
 		};
 		16EA02B71E4B786800B23EAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0B7D1E3A34F9DB268FCEB20 /* Pods-Swipemoji.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Swipemoji/Swipemoji.entitlements;
 				CODE_SIGN_IDENTITY = "";
@@ -552,6 +676,7 @@
 		};
 		16EA02B81E4B786800B23EAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFB73B699FBA5DAACF2803FD /* Pods-Swipemoji.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Swipemoji/Swipemoji.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

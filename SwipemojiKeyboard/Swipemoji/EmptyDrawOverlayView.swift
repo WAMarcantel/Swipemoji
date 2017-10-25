@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class EmptyDrawOverlayView: UIView {
 
@@ -17,24 +18,43 @@ class EmptyDrawOverlayView: UIView {
         // Drawing code
     }
     */
+    var animationView : LOTAnimationView?
+    var overlayLabel : UILabel?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let swipeOverlay = UIImage(named: "logo-gray.png")
-        let swipeOverlayView = UIImageView(image: swipeOverlay)
-        swipeOverlayView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
-        swipeOverlayView.center = self.center
-        let overlayLabel = UILabel(frame: .zero)
-        overlayLabel.frame.size = CGSize(width: 300, height: 44)
-        overlayLabel.frame.origin.x -= overlayLabel.frame.width / 2 - swipeOverlayView.frame.width / 2
-        overlayLabel.frame.origin.y += swipeOverlayView.frame.height
-        overlayLabel.text = "swipe away!"
-        overlayLabel.textAlignment = .center
-        overlayLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 32)
-        overlayLabel.textColor = UIColor(red:0.71, green:0.71, blue:0.71, alpha:1.0)
-        swipeOverlayView.frame.origin.y -= overlayLabel.frame.height / 2
-        self.addSubview(swipeOverlayView)
-        swipeOverlayView.addSubview(overlayLabel)
+        animationView = LOTAnimationView(name: "LogoBWAnimation.json")
+        animationView?.frame = CGRect(x: 0, y: 0, width: 200, height: 112.75)
+        animationView?.center = self.center
+        
+//        let swipeOverlay = UIImage(named: "logo-gray.png")
+//        let swipeOverlayView = UIImageView(image: swipeOverlay)
+//        swipeOverlayView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+//        swipeOverlayView.center = self.center
+        self.overlayLabel = UILabel(frame: .zero)
+        overlayLabel?.frame.size = CGSize(width: 300, height: 44)
+        overlayLabel?.text = "swipe away!"
+        overlayLabel?.textAlignment = .center
+        overlayLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 32)
+        overlayLabel?.textColor = UIColor(red:0.71, green:0.71, blue:0.71, alpha:1.0)
+        overlayLabel?.center = self.center
+        overlayLabel?.frame.origin.y += 44
+
+        animationView?.frame.origin.y -= (overlayLabel?.frame.height)! / 2
+        self.addSubview(animationView!)
+        self.addSubview(overlayLabel!)
+        animateOverlay()
+    }
+    
+    func animateOverlay(){
+        self.alpha = 0
+        self.overlayLabel?.alpha = 0
+        UIView.animate(withDuration: 0.1, animations: {
+            self.alpha = 1
+            self.overlayLabel?.alpha = 1
+        }) { (finished) in
+            self.animationView?.play()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
