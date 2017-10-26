@@ -20,17 +20,13 @@ class EmptyDrawOverlayView: UIView {
     */
     var animationView : LOTAnimationView?
     var overlayLabel : UILabel?
+    var overlayList : [String] = ["swipe away!"]
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         animationView = LOTAnimationView(name: "LogoBWAnimation.json")
         animationView?.frame = CGRect(x: 0, y: 0, width: 200, height: 112.75)
         animationView?.center = self.center
-        
-//        let swipeOverlay = UIImage(named: "logo-gray.png")
-//        let swipeOverlayView = UIImageView(image: swipeOverlay)
-//        swipeOverlayView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
-//        swipeOverlayView.center = self.center
         self.overlayLabel = UILabel(frame: .zero)
         overlayLabel?.frame.size = CGSize(width: 300, height: 44)
         overlayLabel?.text = "swipe away!"
@@ -50,7 +46,7 @@ class EmptyDrawOverlayView: UIView {
         self.alpha = 0
         self.overlayLabel?.alpha = 0
         UIView.animate(withDuration: 0.1, animations: {
-            self.alpha = 1
+            self.alpha = 0.5
             self.overlayLabel?.alpha = 1
         }) { (finished) in
             self.animationView?.play()

@@ -148,7 +148,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
                     DispatchQueue.main.async { // 2
                         self.collectionView.reloadData()
                     }
-                    self.updateProxyText(text: matchResult.name)
+//                    self.updateProxyText(text: matchResult.name)
                 }
             }
         }
@@ -172,24 +172,9 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
 
     //MARK:- Button Functions
 
-    @IBAction func clearButtonPressed(_ sender: Any) {
-        self.reset()
-    }
-    
-    @IBAction func submitPressed(_ sender: Any) {
-        if let canvas = drawingCanvas {
-            if !canvas.isEmpty() {
-                PointCloudLibrary.updateGestureDefault(input: (suggestions?[0])!)
-                drawingCanvas?.clearCanvas()
-                newCharacter = true
-            } else {
-//                self.label!.text = "No match result."
-            }
-        }
-    }
-
     @IBAction func backspacePressed(_ sender: Any) {
         let proxy = textDocumentProxy as UITextDocumentProxy
+        //TODO: If drawn on, then just clear
         proxy.deleteBackward()
         self.reset()
     }
