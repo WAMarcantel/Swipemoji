@@ -265,7 +265,6 @@
 				TargetAttributes = {
 					16EA02941E4B775E00B23EAC = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4XRLFC3F88;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -499,7 +498,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SwipemojiKeyboard/SwipemojiKeyboard.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4XRLFC3F88;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SwipemojiKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -519,7 +518,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SwipemojiKeyboard/SwipemojiKeyboard.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4XRLFC3F88;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SwipemojiKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

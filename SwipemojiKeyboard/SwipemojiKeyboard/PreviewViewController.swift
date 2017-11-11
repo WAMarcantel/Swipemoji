@@ -142,7 +142,16 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
         let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
         if let dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
             var dicArrayStore = dicArray
-            dicArrayStore.remove(at: indexRow)
+            var i = 0
+            dicArrayStore.forEach { dic in
+                print(dic)
+                if dic[popEmojiLabel.text as! String] != nil {
+                    // the key exists in the dictionary
+                    dicArrayStore.remove(at: i)
+                }
+                i += 1
+            }
+            //dicArrayStore.remove(at: indexRow)
             defaults!.set(dicArrayStore, forKey: "gestures")
         }
         _library = PointCloudLibrary.getDemoLibrary()
