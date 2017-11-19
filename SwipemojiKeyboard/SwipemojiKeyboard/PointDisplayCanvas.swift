@@ -21,6 +21,7 @@ class PointDisplayCanvas: UIView {
         // swift 2 : [.FlexibleWidth, .FlexibleHeight]
         tempImageView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tempImageView!.backgroundColor = UIColor(red:1, green:1, blue:1, alpha:1)
+        tempImageView!.backgroundColor = UIColor.red
         self.addSubview(tempImageView!)
     }
     
