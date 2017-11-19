@@ -74,25 +74,32 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "emojiCell", for: indexPath) as! emojiCollectionViewCell
+        cell.emojiLabel.text = _library.pointClouds[indexPath.item].name
+
+        cell.emojiDrawingCanvas = PointDisplayCanvas(frame: cell.gestureView.bounds)
+        cell.emojiDrawingCanvas?.setBackgroundColor(color: UIColor.white)
+        cell.emojiDrawingCanvas?.drawPointCloud(drawingPoints: _library.pointClouds[indexPath.item]._points)
+        cell.gestureView.addSubview(cell.emojiDrawingCanvas!)
+    
+
+
+ 
         
         if(viewOptionSegmentedControl.selectedSegmentIndex == 0){
-            cell.emojiLabel.text = _library.pointClouds[indexPath.row].name
             cell.gestureView.isHidden = true
             cell.emojiLabel.isHidden = false
         } else {
-            cell.emojiDrawingCanvas = PointDisplayCanvas(frame: cell.gestureView.bounds)
-            cell.emojiDrawingCanvas?.drawPointCloud(drawingPoints: _library.pointClouds[indexPath.row]._points)
-            cell.emojiDrawingCanvas!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            cell.gestureView.addSubview(cell.emojiDrawingCanvas!)
             cell.gestureView.isHidden = false
             cell.emojiLabel.isHidden = true
         }
         
         cell.layer.cornerRadius = 8
         cell.dropShadow(color: UIColor.black, offSet: 2)
+        cell.layer.masksToBounds = true
+
         return cell
     }
     
@@ -145,7 +152,7 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
             dicArrayStore.remove(at: indexRow)
             defaults!.set(dicArrayStore, forKey: "gestures")
         }
-        _library = PointCloudLibrary.getDemoLibrary()
+//        _library = PointCloudLibrary.getDemoLibrary()
     }
     
 

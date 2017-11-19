@@ -20,13 +20,19 @@ class PointDisplayCanvas: UIView {
         // swift 1.2 : .FlexibleWidth | .FlexibleHeight -- Object Name is inferred
         // swift 2 : [.FlexibleWidth, .FlexibleHeight]
         tempImageView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        tempImageView!.backgroundColor = UIColor(red:1, green:1, blue:1, alpha:1)
-        tempImageView!.backgroundColor = UIColor.red
+//        print(tempImageView?.autoresizingMask)
+        tempImageView!.backgroundColor = nil
         self.addSubview(tempImageView!)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func setBackgroundColor(color: UIColor){
+        for view in self.subviews {
+            view.backgroundColor = color
+        }
     }
     
     public func drawPointCloud(drawingPoints: [Point]){
@@ -44,8 +50,7 @@ class PointDisplayCanvas: UIView {
 
     func drawLine(_ from:CGPoint, to:CGPoint) {
         // Creates a bitmap-based graphics context and makes it the current context.
-        print(from)
-        print(to)
+
         UIGraphicsBeginImageContext(self.frame.size)
         let context = UIGraphicsGetCurrentContext()
         tempImageView!.image?.draw(in: CGRect(x:0, y:0, width:self.frame.size.width, height:self.frame.size.height))
