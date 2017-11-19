@@ -80,6 +80,7 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
         
         if(viewOptionSegmentedControl.selectedSegmentIndex == 0){
             cell.emojiLabel.text = _library.pointClouds[indexPath.row].name
+            print(_library.pointClouds[indexPath.row].name)
             cell.gestureView.isHidden = true
             cell.emojiLabel.isHidden = false
         } else {
@@ -142,12 +143,29 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
         let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
         if let dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
             var dicArrayStore = dicArray
-            dicArrayStore.remove(at: indexRow)
+            var i = 0
+            dicArrayStore.forEach { dic in
+                print(dic)
+                if dic[popEmojiLabel.text! as String] != nil {
+                    // the key exists in the dictionary
+                    dicArrayStore.remove(at: i)
+                }
+                i += 1
+            }
+            //dicArrayStore.remove(at: indexRow)
             defaults!.set(dicArrayStore, forKey: "gestures")
         }
         _library = PointCloudLibrary.getDemoLibrary()
     }
     
+    @IBAction func editEmoji(_ sender: Any) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "GestureMatch") as! GestureMatchController
+        //            vc.initialText = self.popEmojiLabel.text
+        vc.selectedEmoji = self.popEmojiLabel.text
+        present(vc, animated: true, completion: nil)
+
+    }
 
     
 //     MARK: - Navigation
@@ -158,8 +176,11 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
 //         Pass the selected object to the new view controller.
         
         if(segue.identifier == "editSegue"){
-            let vc = segue.destination as! GestureMatchController
-            vc.initialText = self.popEmojiLabel.text
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "GestureMatch") as! GestureMatchController
+            //            vc.initialText = self.popEmojiLabel.text
+            vc.selectedEmoji = self.popEmojiLabel.text
+
         }
     }
 }

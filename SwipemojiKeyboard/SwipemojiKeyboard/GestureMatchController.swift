@@ -28,13 +28,30 @@ class GestureMatchController: UIViewController {
     
     var _library = PointCloudLibrary.getDemoLibrary()
     
+    var isModal : Bool?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.isModal = (navigationController == nil)
+        
         emojiLabel.text = selectedEmoji
         emojiView.layer.cornerRadius = 50
         emojiView.dropShadow(color: UIColor.black, offSet: 4)
         
+        var closeButtonText : String?
+        var closeButtonFont : UIFont?
+        if(self.isModal)!{
+            closeButtonText = "✕"
+            closeButtonFont = UIFont.systemFont(ofSize: 30)
+        } else {
+            closeButtonText = "＜"
+            closeButtonFont = UIFont(name: "Avenir Next Heavy", size: 18)
+        }
+        print(closeButtonText!)
+        closeButton.setTitle(closeButtonText, for: .normal)
+        closeButton.titleLabel?.font = closeButtonFont
         closeButton.layer.cornerRadius = 22
         closeButton.dropShadow(color: UIColor(red:1.00, green:0.29, blue:0.42, alpha:1.0), offSet: 4)
         
@@ -75,7 +92,11 @@ class GestureMatchController: UIViewController {
     
     @IBAction func closePressed(_ sender: Any) {
 //        dismiss(animated: true, completion: nil)
-        navigationController?.popViewController(animated: true)
+        if ((navigationController?.popViewController(animated: true)) == nil) {
+                print("Different!")
+            dismiss(animated: true, completion: nil)
+        }
+
     }
     
     //Calls this function when the tap is recognized.

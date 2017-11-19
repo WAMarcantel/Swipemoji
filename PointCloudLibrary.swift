@@ -135,9 +135,14 @@ class PointCloudLibrary {
         let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
         if let dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
             var dicArrayStore = dicArray
+            //TODO: Create a more elegant filtering system
             dicArrayStore = dicArrayStore.filter({ (dic) -> Bool in
-                dic.allKeys[0] as! String != input
+                dic.allKeys[0] as! String != input &&  dic.allKeys[1] as! String != input
+
             })
+            for temp in dicArrayStore {
+                print(temp.allKeys)
+            }
             dicArrayStore.append([input : pointsToArray(points: inputPoints), "count": 0])
             defaults!.set(dicArrayStore, forKey: "gestures")
             
