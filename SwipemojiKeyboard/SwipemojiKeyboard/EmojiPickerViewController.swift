@@ -39,7 +39,7 @@ class EmojiPickerViewController: UIViewController, EmojiPickerDelegate {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "GestureMatch") as! GestureMatchController
         vc.selectedEmoji = emoji
-        vc.initialText = emoji
+
         navigationController?.pushViewController(vc, animated: true)
         
     }
