@@ -80,6 +80,7 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
         
         if(viewOptionSegmentedControl.selectedSegmentIndex == 0){
             cell.emojiLabel.text = _library.pointClouds[indexPath.row].name
+            print(_library.pointClouds[indexPath.row].name)
             cell.gestureView.isHidden = true
             cell.emojiLabel.isHidden = false
         } else {
@@ -145,7 +146,7 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
             var i = 0
             dicArrayStore.forEach { dic in
                 print(dic)
-                if dic[popEmojiLabel.text as! String] != nil {
+                if dic[popEmojiLabel.text! as String] != nil {
                     // the key exists in the dictionary
                     dicArrayStore.remove(at: i)
                 }
