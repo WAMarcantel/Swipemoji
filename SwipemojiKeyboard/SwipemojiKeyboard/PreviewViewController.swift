@@ -53,6 +53,7 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewWillAppear(_ animated: Bool) {
         self.popBlackBack.alpha = 0
+        self.popBlackBack.bounds = UIScreen.main.bounds
         self.popUpView.center.y = 1000
         _library = PointCloudLibrary.getDemoLibrary()
         self.collectionView.reloadData()
@@ -74,26 +75,32 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "emojiCell", for: indexPath) as! emojiCollectionViewCell
+        cell.emojiLabel.text = _library.pointClouds[indexPath.item].name
+
+        cell.emojiDrawingCanvas = PointDisplayCanvas(frame: cell.gestureView.bounds)
+        cell.emojiDrawingCanvas?.setBackgroundColor(color: UIColor.white)
+        cell.emojiDrawingCanvas?.drawPointCloud(drawingPoints: _library.pointClouds[indexPath.item]._points)
+        cell.gestureView.addSubview(cell.emojiDrawingCanvas!)
+    
+
+
+ 
         
         if(viewOptionSegmentedControl.selectedSegmentIndex == 0){
-            cell.emojiLabel.text = _library.pointClouds[indexPath.row].name
-            print(_library.pointClouds[indexPath.row].name)
             cell.gestureView.isHidden = true
             cell.emojiLabel.isHidden = false
         } else {
-            cell.emojiDrawingCanvas = PointDisplayCanvas(frame: cell.gestureView.bounds)
-            cell.emojiDrawingCanvas?.drawPointCloud(drawingPoints: _library.pointClouds[indexPath.row]._points)
-            cell.emojiDrawingCanvas!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            cell.gestureView.addSubview(cell.emojiDrawingCanvas!)
             cell.gestureView.isHidden = false
             cell.emojiLabel.isHidden = true
         }
         
         cell.layer.cornerRadius = 8
         cell.dropShadow(color: UIColor.black, offSet: 2)
+        cell.layer.masksToBounds = true
+
         return cell
     }
     
@@ -106,6 +113,7 @@ class PreviewViewController: UIViewController, UICollectionViewDataSource, UICol
         presentPop()
         
         let drawingCanvas = PointDisplayCanvas(frame: popGestureView.bounds)
+        drawingCanvas.setBackgroundColor(color: UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0))
         drawingCanvas.drawPointCloud(drawingPoints: _library.pointClouds[indexPath.item]._points)
         drawingCanvas.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         popGestureView.addSubview(drawingCanvas)
