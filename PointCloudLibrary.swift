@@ -5,43 +5,20 @@ class PointCloudLibrary {
     // empty point cloud array.
     var pointClouds = [PointCloud]()
     
-    
-    // return top related gesture from library
     func recognizeFromLibrary(_ inputGesture:PointCloud) -> MatchResult {
-        var dictionary: [Double:Int] = [:]
-        var scores: [Double] = []
         var b = Double.infinity
-        var k = Double.infinity
         var u = -1
-        var i = 0
-        var j = 4
-        var what = 0
-        var it = 0
-        var now = 0
-        
-
-        
         for (index, pointCloud) in pointClouds.enumerated() {
-           
             if let d = inputGesture.greedyMatch(pointCloud) {
-
-                
                 if(d < b) {
                     b = d
                     u = index
                 }
             }
-            
         }
-        
-        
-        print("break")
-        
-        
         if(u == -1) {
             return MatchResult(name: "No match", score: 0.0)
         } else {
-            print(u)
             let score = round(max((b - 2.0) / -2.0, 0.0) * 100)/100
             return MatchResult(name:pointClouds[u].name, score:score)
         }
@@ -53,17 +30,24 @@ class PointCloudLibrary {
         var scores: [Double] = []
         var answer: [String] = []
         var b = Double.infinity
-        var k = Double.infinity
+        
         var u = -1
         var i = 0
         var j = 4
-        var what = 0
         var it = 0
         var now = 0
         
+        let suggestionBarMax = 10
+        var suggestionBarCount : Int
+        if(suggestionBarMax > self.pointClouds.count){
+            suggestionBarCount = self.pointClouds.count
+        } else {
+            suggestionBarCount = suggestionBarMax
+        }
+        
         for (index, pointCloud) in pointClouds.enumerated() {
             if let l = inputGesture.greedyMatch(pointCloud) {
-                if (i < 5){
+                if (i < suggestionBarCount){
                     dictionary.updateValue(index, forKey: l)
                     scores.append(l)
                     i = i + 1
@@ -75,12 +59,8 @@ class PointCloudLibrary {
         for (index, pointCloud) in pointClouds.enumerated() {
             
             if let d = inputGesture.greedyMatch(pointCloud) {
-                if (now >= 5){
-                    if (now == 5){
-                        print("YES")
-                    }
+                if (now >= suggestionBarCount){
                     while (j >= 0){
-                        print("comparing \(scores[j]) to \(d)")
                         if (scores[j] > d){
                             dictionary.removeValue(forKey: scores[j])
                             scores[j] = d
@@ -90,7 +70,7 @@ class PointCloudLibrary {
                         j = j - 1
                     }
                 }
-                j = 4
+                j = suggestionBarCount - 1
                 
                 if(d < b) {
                     b = d
@@ -99,159 +79,106 @@ class PointCloudLibrary {
                 scores = scores.sorted{ $0 < $1 }
                 now = now + 1
             }
-            
         }
         
         if(u == -1){
             var er = 0
-            while (er < 5){
+            while (er < suggestionBarCount){
                 answer.append("💩")
                 er = er + 1
             }
         }
         else {
-            
-            
-            while (it < 5){
-                print(dictionary[scores[it]]!)
+            while (it < suggestionBarCount){
                 answer.append(pointClouds[dictionary[scores[it]]!].name)
                 it = it + 1
             }
         }
-        
         return answer
-        
     }
-    
-    
-  
-    
     
     static func getDemoLibrary() -> PointCloudLibrary {
         let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
-        
-        let _library = PointCloudLibrary()
-        //_library.pointClouds.append(PointCloud("",)
-        //let defaults = UserDefaults.standard
-        //var gestures = defaults.array(forKey: "gestures")
-        //print(gestures)
+        var _library = PointCloudLibrary()
         if let gestures = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
             for gesture in gestures {
-                for (key, value) in gesture {
-             
-             
-//                    print("key: \(key)")
-//                    print("value \(value)")
-             
-                    //let points = arraysToPoints(value)
-             
-                    var points = [] as [Point]
-                
-                    for array in value as! [NSArray] {
-                        var point = Point(x:array[0] as! Double, y:array[1] as! Double, id:array[2] as! Int)
-                        points.append(point)
-                    }
-                    
-//                    print(points)
-                    _library.pointClouds.append(PointCloud(key as! String, points))
-                    
-                }
+                _library = addGesture(newGesture: gesture, currentLibrary: _library)
             }
-        } else {
-            print("hallllooooooo")
         }
-        
-        print("why isn't this working")
-        //let gestures = defaults.array(forKey: "gestures")  as! [NSMutableDictionary]
-        //print(gestures)
-        
-         print("count: \(_library.pointClouds.count)")
-//        _library.pointClouds.append(PointCloud("T", [
-//            Point(x:30, y:7, id:1), Point(x:103, y:7, id:1),
-//            Point(x:66, y:7, id:2), Point(x:66, y:87, id:2)]))
-//        print("count: \(_library.pointClouds.count)")
-        
-       /* _library.pointClouds.append(PointCloud("N", [
-            Point(x:177, y:92, id:1), Point(x:177, y:2, id:1),
-            Point(x:182, y:1, id:2), Point(x:246, y:95, id:2),
-            Point(x:247, y:87, id:3), Point(x:247, y:1, id:3)]))
-        _library.pointClouds.append(PointCloud("D", [
-            Point(x:345,y:9,id:1),Point(x:345,y:87,id:1),
-            Point(x:351,y:8,id:2),Point(x:363,y:8,id:2),Point(x:372,y:9,id:2),Point(x:380,y:11,id:2),Point(x:386,y:14,id:2),Point(x:391,y:17,id:2),Point(x:394,y:22,id:2),Point(x:397,y:28,id:2),Point(x:399,y:34,id:2),Point(x:400,y:42,id:2),Point(x:400,y:50,id:2),Point(x:400,y:56,id:2),Point(x:399,y:61,id:2),Point(x:397,y:66,id:2),Point(x:394,y:70,id:2),Point(x:391,y:74,id:2),Point(x:386,y:78,id:2),Point(x:382,y:81,id:2),Point(x:377,y:83,id:2),Point(x:372,y:85,id:2),Point(x:367,y:87,id:2),Point(x:360,y:87,id:2),Point(x:355,y:88,id:2),Point(x:349,y:87,id:2)
-            ]))
-        _library.pointClouds.append(PointCloud("💩", [
-            Point(x:507,y:8,id:1),Point(x:507,y:87,id:1),
-            Point(x:513,y:7,id:2),Point(x:528,y:7,id:2),Point(x:537,y:8,id:2),Point(x:544,y:10,id:2),Point(x:550,y:12,id:2),Point(x:555,y:15,id:2),Point(x:558,y:18,id:2),Point(x:560,y:22,id:2),Point(x:561,y:27,id:2),Point(x:562,y:33,id:2),Point(x:561,y:37,id:2),Point(x:559,y:42,id:2),Point(x:556,y:45,id:2),Point(x:550,y:48,id:2),Point(x:544,y:51,id:2),Point(x:538,y:53,id:2),Point(x:532,y:54,id:2),Point(x:525,y:55,id:2),Point(x:519,y:55,id:2),Point(x:513,y:55,id:2),Point(x:510,y:55,id:2)
-            ]))
-        _library.pointClouds.append(PointCloud("X", [
-            Point(x:30,y:146,id:1),Point(x:106,y:222,id:1),
-            Point(x:30,y:225,id:2),Point(x:106,y:146,id:2)
-            ]))
-        _library.pointClouds.append(PointCloud("H", [
-            Point(x:188,y:137,id:1),Point(x:188,y:225,id:1),
-            Point(x:188,y:180,id:2),Point(x:241,y:180,id:2),
-            Point(x:241,y:137,id:3),Point(x:241,y:225,id:3)
-            ]))
-        _library.pointClouds.append(PointCloud("I", [
-            Point(x:371,y:149,id:1),Point(x:371,y:221,id:1),
-            Point(x:341,y:149,id:2),Point(x:401,y:149,id:2),
-            Point(x:341,y:221,id:3),Point(x:401,y:221,id:3)
-            ]))
-        _library.pointClouds.append(PointCloud("exclamation", [
-            Point(x:526,y:142,id:1),Point(x:526,y:204,id:1),
-            Point(x:526,y:221,id:2)
-            ]))
-        _library.pointClouds.append(PointCloud("line", [
-            Point(x:12,y:347,id:1),Point(x:119,y:347,id:1)
-            ]))
-        _library.pointClouds.append(PointCloud("five-point star", [
-            Point(x:177,y:396,id:1),Point(x:223,y:299,id:1),Point(x:262,y:396,id:1),Point(x:168,y:332,id:1),Point(x:278,y:332,id:1),Point(x:184,y:397,id:1)
-            ]))
-        _library.pointClouds.append(PointCloud("null", [
-            Point(x:382,y:310,id:1),Point(x:377,y:308,id:1),Point(x:373,y:307,id:1),Point(x:366,y:307,id:1),Point(x:360,y:310,id:1),Point(x:356,y:313,id:1),Point(x:353,y:316,id:1),Point(x:349,y:321,id:1),Point(x:347,y:326,id:1),Point(x:344,y:331,id:1),Point(x:342,y:337,id:1),Point(x:341,y:343,id:1),Point(x:341,y:350,id:1),Point(x:341,y:358,id:1),Point(x:342,y:362,id:1),Point(x:344,y:366,id:1),Point(x:347,y:370,id:1),Point(x:351,y:374,id:1),Point(x:356,y:379,id:1),Point(x:361,y:382,id:1),Point(x:368,y:385,id:1),Point(x:374,y:387,id:1),Point(x:381,y:387,id:1),Point(x:390,y:387,id:1),Point(x:397,y:385,id:1),Point(x:404,y:382,id:1),Point(x:408,y:378,id:1),Point(x:412,y:373,id:1),Point(x:416,y:367,id:1),Point(x:418,y:361,id:1),Point(x:419,y:353,id:1),Point(x:418,y:346,id:1),Point(x:417,y:341,id:1),Point(x:416,y:336,id:1),Point(x:413,y:331,id:1),Point(x:410,y:326,id:1),Point(x:404,y:320,id:1),Point(x:400,y:317,id:1),Point(x:393,y:313,id:1),Point(x:392,y:312,id:1),
-            Point(x:418,y:309,id:2),Point(x:337,y:390,id:2)
-            ]))
-        _library.pointClouds.append(PointCloud("arrowhead", [
-            Point(x:506,y:349,id:1),Point(x:574,y:349,id:1),
-            Point(x:525,y:306,id:2),Point(x:584,y:349,id:2),Point(x:525,y:388,id:2)
-            ]))
-        _library.pointClouds.append(PointCloud("pitchfork", [
-            Point(x:38,y:470,id:1),Point(x:36,y:476,id:1),Point(x:36,y:482,id:1),Point(x:37,y:489,id:1),Point(x:39,y:496,id:1),Point(x:42,y:500,id:1),Point(x:46,y:503,id:1),Point(x:50,y:507,id:1),Point(x:56,y:509,id:1),Point(x:63,y:509,id:1),Point(x:70,y:508,id:1),Point(x:75,y:506,id:1),Point(x:79,y:503,id:1),Point(x:82,y:499,id:1),Point(x:85,y:493,id:1),Point(x:87,y:487,id:1),Point(x:88,y:480,id:1),Point(x:88,y:474,id:1),Point(x:87,y:468,id:1),
-            Point(x:62,y:464,id:2),Point(x:62,y:571,id:2)
-            ]))
-        _library.pointClouds.append(PointCloud("six-point star", [
-            Point(x:177,y:554,id:1),Point(x:223,y:476,id:1),Point(x:268,y:554,id:1),Point(x:183,y:554,id:1),
-            Point(x:177,y:490,id:2),Point(x:223,y:568,id:2),Point(x:268,y:490,id:2),Point(x:183,y:490,id:2)
-            ]))
-        _library.pointClouds.append(PointCloud("asterisk", [
-            Point(x:325,y:499,id:1),Point(x:417,y:557,id:1),
-            Point(x:417,y:499,id:2),Point(x:325,y:557,id:2),
-            Point(x:371,y:486,id:3),Point(x:371,y:571,id:3)
-            ]))
-        _library.pointClouds.append(PointCloud("half-note", [
-            Point(x:546,y:465,id:1),Point(x:546,y:531,id:1),
-            Point(x:540,y:530,id:2),Point(x:536,y:529,id:2),Point(x:533,y:528,id:2),Point(x:529,y:529,id:2),Point(x:524,y:530,id:2),Point(x:520,y:532,id:2),Point(x:515,y:535,id:2),Point(x:511,y:539,id:2),Point(x:508,y:545,id:2),Point(x:506,y:548,id:2),Point(x:506,y:554,id:2),Point(x:509,y:558,id:2),Point(x:512,y:561,id:2),Point(x:517,y:564,id:2),Point(x:521,y:564,id:2),Point(x:527,y:563,id:2),Point(x:531,y:560,id:2),Point(x:535,y:557,id:2),Point(x:538,y:553,id:2),Point(x:542,y:548,id:2),Point(x:544,y:544,id:2),Point(x:546,y:540,id:2),Point(x:546,y:536,id:2)
-            ]))
-        
-        */
-
-        
+        _library.pointClouds.sort(by: {$0.count > $1.count})
         return _library
     }
     
-    /*func arraysToPoints(arrays:[NSArray]) -> [Point] {
-        var points = [] as [Point]
-        for array in arrays {
-            var point = Point(x:array[0] as! Double, y:array[1] as! Double, id:array[2] as! Int)
-            
-            points.append(point)
-            
-            
-            
+    static func addGesture(newGesture : NSMutableDictionary, currentLibrary: PointCloudLibrary) -> PointCloudLibrary{
+        var gestureCount : Int
+        if(newGesture["count"] != nil){
+            gestureCount = newGesture["count"] as! Int
+        } else {
+            gestureCount = 0
         }
+        for (key, value) in newGesture {
+            if(key as! String == "count"){
+                gestureCount = value as! Int
+            } else {
+                var points = [] as [Point]
+                for array in value as! [NSArray] {
+                    let point = Point(x:array[0] as! Double, y:array[1] as! Double, id:array[2] as! Int)
+                    points.append(point)
+                }
+                currentLibrary.pointClouds.append(PointCloud(key as! String, points, gestureCount ))
+            }
+        }
+        return currentLibrary
+    }
+    
+    static func submitGesture(input: String, inputPoints: [Point]){
+        let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
+        if let dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
+            var dicArrayStore = dicArray
+            //TODO: Create a more elegant filtering system
+            dicArrayStore = dicArrayStore.filter({ (dic) -> Bool in
+                dic.allKeys[0] as! String != input &&  dic.allKeys[1] as! String != input
+
+            })
+            for temp in dicArrayStore {
+                print(temp.allKeys)
+            }
+            dicArrayStore.append([input : pointsToArray(points: inputPoints), "count": 0])
+            defaults!.set(dicArrayStore, forKey: "gestures")
+            
+        } else {
+            var dicArray: [NSMutableDictionary] = []
+            dicArray.append([input : pointsToArray(points: inputPoints), "count": 0])
+            defaults!.set(dicArray, forKey: "gestures")
+        }
+    }
+    
+    static func pointsToArray(points:[Point]) -> [NSArray] {
+        var pointArray = [] as [NSArray]
         
-        
-        return points
-        
-    } */
+        for point in points {
+            var array = [point.x, point.y, point.id] as NSArray
+            pointArray.append(array)
+        }
+        return pointArray
+    }
+    
+    static func updateGestureDefault(input: String){
+        let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
+            if var dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
+                let index = dicArray.index(where: { $0[input] != nil })
+                let updatingDict = dicArray[index!]
+                var newValue = 0
+                if let count = updatingDict["count"] as? Int {
+                    print(count)
+                    newValue = count + 1
+                } else {
+                    print("No count defined") //keeps from errors occurring to old model
+                }
+                dicArray.append([ input: updatingDict[input], "count": newValue])
+                dicArray.remove(at: index!)
+                defaults!.set(dicArray, forKey: "gestures")
+            }
+    }
+
 }
