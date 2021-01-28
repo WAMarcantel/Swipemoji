@@ -59,6 +59,7 @@ class DemoViewController: UIViewController {
     
     func resetMatchingGame(){
         emojiLabel.text = getRandomEmoji()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "clear"), object: nil)
         self.inputTextField.text = ""
     }
     

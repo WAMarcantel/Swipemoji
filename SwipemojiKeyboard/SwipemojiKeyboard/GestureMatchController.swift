@@ -12,10 +12,15 @@ class GestureMatchController: UIViewController {
 
     var initialText : String?
     @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var emojiText: UITextField!
     
     @IBOutlet weak var canvas: UIView!
     
+    @IBOutlet weak var closeButton: UIButton!
+    
+    @IBOutlet weak var emojiView: UIView!
+    @IBOutlet weak var emojiLabel: UILabel!
+    
+    var selectedEmoji: String?
     
     var lastPoint = CGPoint.zero
     
@@ -23,23 +28,62 @@ class GestureMatchController: UIViewController {
     
     var _library = PointCloudLibrary.getDemoLibrary()
     
+    var isModal : Bool?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        submitButton.layer.cornerRadius = 10
-        emojiText.text = initialText
+        
+        self.isModal = (navigationController == nil)
+        
+        emojiLabel.text = selectedEmoji
+        emojiView.layer.cornerRadius = 50
+        emojiView.dropShadow(color: UIColor.black, offSet: 4)
+        
+        var closeButtonText : String?
+        var closeButtonFont : UIFont?
+        if(self.isModal)!{
+            closeButtonText = "✕"
+            closeButtonFont = UIFont.systemFont(ofSize: 30)
+        } else {
+            closeButtonText = "＜"
+            closeButtonFont = UIFont(name: "Avenir Next Heavy", size: 18)
+        }
+        print(closeButtonText!)
+        closeButton.setTitle(closeButtonText, for: .normal)
+        closeButton.titleLabel?.font = closeButtonFont
+        closeButton.layer.cornerRadius = 22
+        closeButton.dropShadow(color: UIColor(red:1.00, green:0.29, blue:0.42, alpha:1.0), offSet: 4)
+        
+        submitButton.layer.cornerRadius = 30
+        submitButton.dropShadow(color: UIColor(red:1.00, green:0.29, blue:0.42, alpha:1.0), offSet: 4)
+        
+        canvas.layer.cornerRadius = 8
+        canvas.dropShadow(color: UIColor.black, offSet: 4)
+    
+        
         drawingCanvas = PointDrawingCanvas(frame: canvas.bounds)
         drawingCanvas!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         canvas.addSubview(drawingCanvas!)
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
-        
-        view.addGestureRecognizer(tap)
+        let clearButton = UIButton(frame: CGRect(x: canvas.bounds.width - 65, y: canvas.frame.origin.y + 5, width: 100, height: 30))
+    
+        clearButton.setTitle("clear", for: .normal)
+        clearButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        clearButton.tag = 1
+        clearButton.setTitleColor(UIColor.darkGray, for: .normal)
+        clearButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 18)
+        clearButton.titleLabel?.textAlignment = .right
+
+        self.view.addSubview(clearButton)
         
         // Do any additional setup after loading the view.
+    }
+    
+    func buttonPressed(sender: UIButton!){
+        if(sender.tag == 1){
+            drawingCanvas?.clearCanvas()
+        }
     }
 
     @IBAction func clearPressed(_ sender: Any) {
@@ -47,7 +91,12 @@ class GestureMatchController: UIViewController {
     }
     
     @IBAction func closePressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
+        if ((navigationController?.popViewController(animated: true)) == nil) {
+                print("Different!")
+            dismiss(animated: true, completion: nil)
+        }
+
     }
     
     //Calls this function when the tap is recognized.
@@ -59,68 +108,12 @@ class GestureMatchController: UIViewController {
     @IBAction func submitGesture(_ sender: Any) {
         if let canvas = drawingCanvas {
             if !canvas.isEmpty() {
-                //let pointCloud = PointCloud("input gesture", canvas.points)
-                
-                //let matchResult = _library.recognizeFromLibrary(pointCloud)
-                //                let text = "\(matchResult.name), score: \(matchResult.score)"
-                
-                //print(canvas.points) //array of Point objects
-                
-                let defaults = UserDefaults.init(suiteName: "group.swipemoji.appgroup")
-                if let dicArray = defaults!.array(forKey: "gestures") as? [NSMutableDictionary] {
-                    var dicArrayStore = dicArray
-                    dicArrayStore = dicArrayStore.filter({ (dic) -> Bool in
-                        dic.allKeys[0] as! String != emojiText.text!
-                    })
-                    dicArrayStore.append([emojiText.text!:pointsToArray(points: canvas.points)])
-                    //_library.pointClouds.append(PointCloud(emojiText.text!, canvas.points))
-                    defaults!.set(dicArrayStore, forKey: "gestures")
-                    
-                } else {
-                    var dicArray: [NSMutableDictionary] = []
-                    
-                    dicArray.append([emojiText.text!:pointsToArray(points: canvas.points)])
-                    //_library.pointClouds.append(PointCloud(emojiText.text!, canvas.points))
-                    
-                    defaults!.set(dicArray, forKey: "gestures")
-                }
-                
-                
-                
-                
-                
-                
-                //let text = "\(matchResult.name) "
-                //var proxy = textDocumentProxy as UITextDocumentProxy
-                
-                /*if let input = text as String? {
-                    proxy.insertText(input)
-                    drawingCanvas?.clearCanvas()
-                }*/
+                PointCloudLibrary.submitGesture(input: selectedEmoji!, inputPoints: canvas.points)
             } else {
                 //self.emojiText.text = "No match result."
             }
         }
         self.dismiss(animated: true)
-        
-        
-    }
-    func pointsToArray(points:[Point]) -> [NSArray] {
-        var pointArray = [] as [NSArray]
-        
-        for point in points {
-            var array = [point.x, point.y, point.id] as NSArray
-            pointArray.append(array)
-            
-            
-            
-            
-            
-            
-        }
-        //print(pointArray)
-        return pointArray
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -138,5 +131,7 @@ class GestureMatchController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }
